@@ -24,9 +24,10 @@
 
     1. [Call Stack](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/call-stack.md)
     2. [Primitive Types](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/primitive-types.md)
-    3. [Value Types and Reference Types](https://github.com/SewookHan/TIL/blob/main/JavaScript/value-types-and-reference-types.md) 
-
+    3. [Value Types and Reference Types](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/value-types-and-reference-types.md) 
+  4. [Implicit, Explicit, Nominal, Structuring and Duck Typing](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/implicit-explicit-nominal-structuring-and-duck-typing.md)
   
 
+  
     
 

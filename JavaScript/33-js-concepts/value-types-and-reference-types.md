@@ -1,8 +1,8 @@
 # Value Types and Reference Types
 
-### 
 
-- **Passed by value(값에 의한 전달) **: Primitive Types
+
+- Passed by value(값에 의한 전달) : Primitive Types
 
   - Boolean
 
@@ -16,7 +16,7 @@
 
     
 
-- **Passed by reference(참조에 의한 전달) ** : Objects
+- Passed by reference(참조에 의한 전달)  : Objects
 
   - Array
   - Function
@@ -55,7 +55,7 @@ var z = null;
 
 ### 2. Objects
 
-- 원시 타입이 아닌 값이 할당된 변수들은 그 값들을 가르키는 **참조(reference)**를 갖게 된다.
+- 원시 타입이 아닌 값이 할당된 변수들은 그 값들을 가르키는 참조(reference)를 갖게 된다.
 
 - 변수는 실제로 값을 포함하고 있지 않으며, 참조는 메모리상의 객체의 위치를 가르키고 있다.
 
