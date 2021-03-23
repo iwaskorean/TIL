@@ -1,7 +1,5 @@
 # Pseudo Classes vs Pseudo Elements
 
-
-
 ### Pseudo Class
 
 - 일반적인 선택자로 표현 할 수 없는 것을 선택
@@ -24,9 +22,9 @@
 
   - `:not(x)`, `:target`, `:lang(language)`
 
+<br/>
 
-
-
+<br/>
 
 ### Pseudo Element
 
@@ -35,7 +33,7 @@
 
 
 
-
+<br/><br/>
 
 ### :: before vs : before
 
@@ -45,7 +43,11 @@
 
 
 
+<br/>
 
+<br/>
+
+<br/>
 
 
 
