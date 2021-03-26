@@ -8,8 +8,6 @@
 
 <br>
 
-
-
 ## Front-end
 
 - ### **Tools**
@@ -29,9 +27,15 @@
     - [== vs === vs typeof](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/==-vs-===-vs-typeof.md)
     - [Function Scope, Block Scope and Lexical Scope](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/function-block-lexical-scope.md)
     - [Expression vs Statement](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expression-vs-statement.md)
+    - [IIFE, Modules and Namespaces](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/iife-modules-and-namespaces.md)
 
 <br>
 
+- ### TypeScript
+
+  - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
+
+<br>
 
 - ### CSS
 
