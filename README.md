@@ -28,6 +28,7 @@
     - [Function Scope, Block Scope and Lexical Scope](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/function-block-lexical-scope.md)
     - [Expression vs Statement](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expression-vs-statement.md)
     - [IIFE, Modules and Namespaces](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/iife-modules-and-namespaces.md)
+    - [Message Queue and Event Loop](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/message-queue-and-event-loop.md)
 
 <br>
 
