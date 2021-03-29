@@ -29,12 +29,14 @@
     - [Expression vs Statement](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expression-vs-statement.md)
     - [IIFE, Modules and Namespaces](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/iife-modules-and-namespaces.md)
     - [Message Queue and Event Loop](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/message-queue-and-event-loop.md)
+    - [setTimeout, setInterval and requestAnimationFrame](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/settimeout-setinterval-requestanimationframe.md)
 
 <br>
 
 - ### TypeScript
 
   - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
+  - [Literal and Template Literal Type](https://github.com/SewookHan/TIL/blob/main/TypeScript/literal-type-and-template-literal-type.md)
 
 <br>
 
