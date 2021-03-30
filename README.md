@@ -2,7 +2,7 @@
 
 > 📝 Today I Learned
 >
-> 매일매일 배우고 이해한 것들의 기록
+> 매일매일 배우고 이해한 것들을 기록하자!
 
 <br>
 
@@ -30,6 +30,7 @@
     - [IIFE, Modules and Namespaces](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/iife-modules-and-namespaces.md)
     - [Message Queue and Event Loop](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/message-queue-and-event-loop.md)
     - [setTimeout, setInterval and requestAnimationFrame](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/settimeout-setinterval-requestanimationframe.md)
+    - [JavaScript Engines](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/javascript-engines.md)
 
 <br>
 
@@ -37,6 +38,7 @@
 
   - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
   - [Literal and Template Literal Type](https://github.com/SewookHan/TIL/blob/main/TypeScript/literal-type-and-template-literal-type.md)
+  - ["?" and "!" in TypeScript](https://github.com/SewookHan/TIL/blob/main/TypeScript/question-mark-and-exclamation-mark.md)
 
 <br>
 
