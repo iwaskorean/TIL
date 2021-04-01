@@ -31,6 +31,7 @@
     - [Message Queue and Event Loop](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/message-queue-and-event-loop.md)
     - [setTimeout, setInterval and requestAnimationFrame](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/settimeout-setinterval-requestanimationframe.md)
     - [JavaScript Engines](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/javascript-engines.md)
+    - [Bitwise Operator, Type Arrays and Array Buffer](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/bitwise-operator-type-arrays-and-array-buffer.md)
 
 <br>
 
