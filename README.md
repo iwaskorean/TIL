@@ -33,6 +33,7 @@
     - [JavaScript Engines](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/javascript-engines.md)
     - [Bitwise Operator, Type Arrays and Array Buffer](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/bitwise-operator-type-arrays-and-array-buffer.md)
     - [DOM and Layout Trees](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/dom-and-layout-trees.md)
+    - [Factories and Classes](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/factories-and-classes.md)
 
 <br>
 
