@@ -34,6 +34,8 @@
     - [Bitwise Operator, Type Arrays and Array Buffer](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/bitwise-operator-type-arrays-and-array-buffer.md)
     - [DOM and Layout Trees](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/dom-and-layout-trees.md)
     - [Factories and Classes](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/factories-and-classes.md)
+    - [this, call, apply and bind](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/this-call-apply-and-bind.md)
+    - [new, Constructor, instanceof and instances](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/new-constructor-instanceof-and-instance.md)
 
 <br>
 
@@ -42,6 +44,12 @@
   - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
   - [Literal and Template Literal Type](https://github.com/SewookHan/TIL/blob/main/TypeScript/literal-type-and-template-literal-type.md)
   - ["?" and "!" in TypeScript](https://github.com/SewookHan/TIL/blob/main/TypeScript/question-mark-and-exclamation-mark.md)
+
+<br>
+
+- ### HTML
+
+  - [Sementics](https://github.com/SewookHan/TIL/blob/main/HTML/sementics.md)
 
 <br>
 
