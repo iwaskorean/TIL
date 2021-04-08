@@ -36,6 +36,7 @@
     - [Factories and Classes](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/factories-and-classes.md)
     - [this, call, apply and bind](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/this-call-apply-and-bind.md)
     - [new, Constructor, instanceof and instances](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/new-constructor-instanceof-and-instance.md)
+    - [Prototype Inheritance and Prototype Chain](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/prototype-inheritance-and-prototype-chain.md)
 
 <br>
 
