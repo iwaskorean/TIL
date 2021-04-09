@@ -32,11 +32,11 @@ const person2 = new Human("Junwoo", "Jeon");
 ![img](https://github.com/Lee-hyuna/33-js-concepts-kr/wiki/resource/yongkwan/17/01.png)
 
 
-- 자바스크립트에서 객체들은 `[[Protytpe]]` 이라는 숨겨진 프로퍼티를 갖는다. 이 프로퍼티는 `null `값을 가지거나 다른 객체를 참조하는데 `[[Protytpe]]` 프로퍼티에 의해 참조 대상이 되는 객체를 프로토타입이라고 한다.
+- 자바스크립트에서 객체들은 `[[Prototype]]` 이라는 숨겨진 프로퍼티를 갖는다. 이 프로퍼티는 `null `값을 가지거나 다른 객체를 참조하는데 `[[Prototype]]` 프로퍼티에 의해 참조 대상이 되는 객체를 프로토타입이라고 한다.
 
 - 우리가 `object`에 있는 프로퍼티를 읽을려고 할때 프로퍼티가 없을 경우 자바스크립트는 자동으로 프로토타입에서 프로퍼티를 찾는다. 이것을 프로토타입 상속(prototypal inheritance) 이라고 부른다.
 
-- `[[Protytpe]]` 프로퍼티는 내부의 숨겨진 프로퍼티지만 `__proto__`를 사용하면 값을 설정 할 수 있다. 즉 `__proto__`는 `[[Prototyoe]]`의 getter/setter 인 것이다. 
+- `[[Prototype]]` 프로퍼티는 내부의 숨겨진 프로퍼티지만 `__proto__`를 사용하면 값을 설정 할 수 있다. 즉 `__proto__`는 `[[Prototype]]`의 getter/setter 인 것이다. 
 
 - 최근에는 `__proto__` 대신  `Object.getPrototypeOf`나  `Object.setPrototypeOf`을 사용해 프로토타입을 get하거나 set한다.
 
@@ -214,11 +214,11 @@ const person2 = new Human("Junwoo", "Jeon");
 
 ###### Note
 
-######  - 내용 추가해서 정리할 것
+######  - 상속 내용 추가해서 정리할 것
 
 ------
 
 **Reference**
 
-- [Prototypal inheritance](https://javascript.info/prototype-inheritance)
+- [Prototype inheritance](https://javascript.info/prototype-inheritance)
 - [F.prototype](https://javascript.info/function-prototype)
