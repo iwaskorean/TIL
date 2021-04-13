@@ -1,4 +1,4 @@
-# TIL 
+# TIL
 
 > 📝 Today I Learned
 >
@@ -38,6 +38,8 @@
     - [new, Constructor, instanceof and instances](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/new-constructor-instanceof-and-instance.md)
     - [Prototype Inheritance and Prototype Chain](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/prototype-inheritance-and-prototype-chain.md)
     - [Object.create and Object.assign](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/objectcreate-and-objectassign.md)
+    - [map, reducer, filter](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/map-reduce-filter.md)
+    - [Pure Functions, Side Effect and Side Mutation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/pure-functions-side-effects-and-state-mutation.md)
 
 <br>
 
