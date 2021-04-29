@@ -42,6 +42,7 @@
     - [map, reducer, filter](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/map-reduce-filter.md)
     - [Pure Functions, Side Effect and Side Mutation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/pure-functions-side-effects-and-state-mutation.md)
     - [Closure](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/closure.md)
+    - [High Order Functions](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/high-order-functions.md)
 
 <br>
 
