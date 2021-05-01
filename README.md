@@ -44,6 +44,7 @@
     - [Closure](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/closure.md)
     - [High Order Functions](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/high-order-functions.md)
     - [Recursion](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/recursion.md)
+    - [Collections and Generators](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/collections-and-generators.md)
 
 <br>
 
