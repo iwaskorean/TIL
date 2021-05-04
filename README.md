@@ -45,6 +45,7 @@
     - [High Order Functions](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/high-order-functions.md)
     - [Recursion](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/recursion.md)
     - [Collections and Generators](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/collections-and-generators.md)
+    - [Promise](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/promise.md)
 
 <br>
 
