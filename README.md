@@ -47,6 +47,7 @@
     - [Collections and Generators](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/collections-and-generators.md)
     - [Promise](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/promise.md)
     - [async/await](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/async-and-await.md)
+    - [Expensive Opeartion and Big O Notation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expensive-operation-and-big-o-notation.md)
 
 <br>
 
