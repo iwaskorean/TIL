@@ -14,7 +14,7 @@
   
   - [Webpack](https://github.com/SewookHan/TIL/blob/main/Webpack/Webpack.md)
 
-<br>
+
 
 - ### **JavaScript**
 
@@ -48,8 +48,9 @@
     - [Promise](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/promise.md)
     - [async/await](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/async-and-await.md)
     - [Expensive Opeartion and Big O Notation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expensive-operation-and-big-o-notation.md)
+    - [Inheritance, Polymorphism And Code Reuse](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/inheritance-polymorphism-and-code-reuse)
 
-<br>
+
 
 - ### TypeScript
 
@@ -57,13 +58,13 @@
   - [Literal and Template Literal Type](https://github.com/SewookHan/TIL/blob/main/TypeScript/literal-type-and-template-literal-type.md)
   - ["?" and "!" in TypeScript](https://github.com/SewookHan/TIL/blob/main/TypeScript/question-mark-and-exclamation-mark.md)
 
-<br>
+
 
 - ### HTML
 
   - [Sementics](https://github.com/SewookHan/TIL/blob/main/HTML/sementics.md)
 
-<br>
+
 
 - ### CSS
 
