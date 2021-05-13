@@ -51,6 +51,7 @@
     - [Inheritance, Polymorphism And Code Reuse](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/inheritance-polymorphism-and-code-reuse.md)
     - [Design Pattern](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/design-pattern.md)
     - [Partial Applications, Currying, Compose and Pipe](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/partial-applications-currying-compose-and-pipe.md)
+    - [Clean Code](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/clean-code.md)
 
 
 
