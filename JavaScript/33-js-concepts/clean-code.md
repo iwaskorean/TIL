@@ -1,14 +1,14 @@
 # Clean Code
 
-> ryanmcdermott의 **[clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)**를 번역한 포스트입니다.
+> *ryanmcdermott의 [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)를 번역한 포스트입니다.*
 
-깔끔하고 의미있는 코드(clean code)를 사용하면 가독성과 재사용성을 높이고 리팩토링하기 쉬운 더 나은 프로그램을 개발할 수 있다.
+클린 코드(clean code)를 사용하면 코드의 가독성과 재사용성을 높일수 있으며 리팩토링하기 쉬운 프로그램을 개발할 수 있다.
 
 <br>
 
 ## Variables
 
-#### 의미있고 발음하기 쉬운 변수 이름 사용
+#### 의미를 내포하고 있으며 발음하기 쉬운 변수 이름 사용
 
 - Bad
 
@@ -42,7 +42,7 @@
 
 
 
-#### 검색 가능한 이름 사용
+#### 검색 가능한 이름 사용
 
 작성된 코드의 리뷰나 검색을 위해서 프로그램을 쉽게 이해할 수 있는 의미를 담고 있는 변수명을 사용해야한다.
 
@@ -123,9 +123,9 @@
 
 
 
-#### 불필요한 컨텍스트의 반복 지양
+#### 불필요한 컨텍스트의 반복 지양
 
-클래스나 객체의 이름이 무언가를 의미하고 있다면, 프로퍼티에 클래스나 객체의 이름을 반복할 필요 없다.
+클래스나 객체의 이름이 무언가를 의미하고 있다면, 프로퍼티에 클래스/객체의 이름을 반복할 필요 없다.
 
 - Bad
 
@@ -211,7 +211,7 @@
 
 
 
-#### 함수는 한 가지만 수행
+#### 함수는 한 가지만 수행
 
 두 가지 이상의 일을 수행하는 함수들은 비교하거나 테스트할때의 어려움이 있다. 함수를 하나의 작업으로 분리할 수 있으면 쉽게 리팩토링할 수 있으며 가독성을 높일 수 있다.
 
@@ -243,7 +243,7 @@
 
 
 
-#### 함수의 기능을 설명하는 함수명
+#### 함수의 기능을 설명하는 함수명
 
 - Bad
 
@@ -271,7 +271,7 @@
 
 
 
-#### 함수는 오직 한 단계의 추상화여야 한다.
+#### 함수는 오직 한 단계의 추상화여야 한다.
 
 두 단계 이상의 추상화가 적용된 경우 많은 작업을 수행함으로 비효율적이다.
 
@@ -341,11 +341,11 @@
 
 
 
-#### 중복된 코드 제거
+#### 중복된 코드 제거
 
 중복된 코드들은 일부 코드의 로직을 변경할때 다른 코드들의 로직도 변경될 가능성이 있으므로 중복을 최소화 하는 것이 좋다.
 
-중복된 코드를 제거한다는 것은 다양한 요소들을 처리 할 수 있는 함수/모듈/클래스 등의 추상화를  만드는 것을 의미한다. 추상화를 할때는 Classes 섹션에 나올 SOLID 원칙을 따라 올바르게 작성하는 것이 중요하다.
+중복된 코드를 제거한다는 것은 다양한 요소들을 처리 할 수 있는 함수/모듈/클래스 등의 추상화를  만드는 것을 의미한다. 추상화를 할때는 Classes 섹션에 나올 SOLID 원칙을 따라 올바르게 작성하는 것이 중요하다.
 
 - Bad
 
@@ -465,7 +465,7 @@
 
 
 
-#### 플래그를 함수 매개변수로 사용하지말것
+#### 플래그를 함수 매개변수로 사용하지말것
 
 플래그 매개변수를 사용해 조건 분기를 통해 함수가 다른 동작을 수행하는 경우 함수를 분리시켜야 한다.
 
@@ -531,7 +531,336 @@
 
 
 
-###### side effect part2 ...
+#### Side Effect 방지(part 2)
+
+자바스크립트에서 일부 값들은 변경이 불가하며(immutable) 다른 일부 값들은 변경이 가능하다(mutable). 객체와 배열 두 종류는 변경 가능한 값이므로 함수에 매개변수로 전달할때 주의해야한다. 자바스크립트 함수는 객체의 프로퍼티와 배열의 요소의 값을 바꿀 수 있으며 이것이 버그의 원인이 된다.
+
+- Bad
+
+  ```javascript
+  const addItemToCart = (cart, item) => {
+    cart.push({ item, date: Date.now() });
+  };
+  // 쇼핑카트에 추가되어있던 item에 대한 배열(cart)은 반환되지 않는다.
+  ```
+
+- Good
+
+  ```javascript
+  const addItemToCart = (cart, item) => {
+    return [...cart, { item, date: Date.now() }];
+  };
+  // addItemToCart가 반환할때 cart를 복제 및 새로운 item을 추가한 후 반환하기 때문에 이전 쇼핑카트에 추가해놓은 아이템에 영향을 주지 않는다.
+  ```
+
+
+
+#### 전역 함수에 쓰지말 것
+
+전역 범위를 작성하는 것은(polluting globals)은 나쁜 습관이다. 다른 라이브러리와 충돌할 가능성이 있고 API 사용자가 프로덕션시 예외가 발생할 때까지 모를수도 있다. 예를 들어 Array 메소드를 확장해 두 배열간의 차이를 나타낼수 있는 `diff` 메소드를 만들려고 할때, `Array.prototype`을 사용할 경우 다른 라이브러리와 충돌할 가능성이 있다. 이 경우 `Array.prototype`이 아닌 ES6의 class 키워드를 사용할 수 있다.
+
+- Bad
+
+  ```javascript
+  Array.prototype.diff = function diff(comparisonArray) {
+    const hash = new Set(comparisonArray);
+    return this.filter(elem => !hash.has(elem));
+  };
+  ```
+
+- Good
+
+  ```javascript
+  class SuperArray extends Array {
+    diff(comparisonArray) {
+      const hash = new Set(comparisonArray);
+      return this.filter(elem => !hash.has(elem));
+    }
+  }
+  ```
+
+
+
+#### 명령형 프로그래밍보다 함수형 프로그래밍을 지향
+
+- Bad
+
+  ```javascript
+  const programmerOutput = [
+    {
+      name: "Uncle Bobby",
+      linesOfCode: 500
+    },
+    {
+      name: "Suzie Q",
+      linesOfCode: 1500
+    },
+    {
+      name: "Jimmy Gosling",
+      linesOfCode: 150
+    },
+    {
+      name: "Gracie Hopper",
+      linesOfCode: 1000
+    }
+  ];
+  
+  let totalOutput = 0;
+  
+  for (let i = 0; i < programmerOutput.length; i++) {
+    totalOutput += programmerOutput[i].linesOfCode;
+  }
+  ```
+
+- Good
+
+  ```javascript
+  const programmerOutput = [
+    {
+      name: "Uncle Bobby",
+      linesOfCode: 500
+    },
+    {
+      name: "Suzie Q",
+      linesOfCode: 1500
+    },
+    {
+      name: "Jimmy Gosling",
+      linesOfCode: 150
+    },
+    {
+      name: "Gracie Hopper",
+      linesOfCode: 1000
+    }
+  ];
+  
+  const totalOutput = programmerOutput.reduce(
+    (totalLines, output) => totalLines + output.linesOfCode,
+    0
+  );
+  ```
+
+
+
+#### 조건문 캡슐화
+
+- Bad
+
+  ```javascript
+  if (fsm.state === "fetching" && isEmpty(listNode)) {
+    // ...
+  }
+  ```
+
+- Good
+
+  ```javascript
+  function shouldShowSpinner(fsm, listNode) {
+    return fsm.state === "fetching" && isEmpty(listNode);
+  }
+  
+  if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
+    // ...
+  }
+  ```
+
+
+
+#### 부정연산자를 사용한 조건문 지양
+
+- Bad
+
+  ```javascript
+  function isDOMNodeNotPresent(node) {
+    // ...
+  }
+  if (!isDOMNodeNotPresent(node)) {
+    // ...
+  }
+  ```
+
+- Good
+
+  ```javascript
+  function isDOMNodePresent(node) {
+    // ...
+  }
+  if (isDOMNodePresent(node)) {
+    // ...
+  }
+  ```
+
+
+
+#### 다수의 조건문 사용 지양 
+
+다수의 조건문이 필요한 경우 다형성 즉, class 상속(extend)을 이용하는것이 좋다. 
+
+- Bad
+
+  ```javascript
+  class Airplane {
+    // ...
+    getCruisingAltitude() {
+      switch (this.type) {
+        case "777":
+          return this.getMaxAltitude() - this.getPassengerCount();
+        case "Air Force One":
+          return this.getMaxAltitude();
+        case "Cessna":
+          return this.getMaxAltitude() - this.getFuelExpenditure();
+      }
+    }
+  }
+  ```
+
+- Good
+
+  ```javascript
+  class Airplane {
+    // ...
+  }
+  
+  class Boeing777 extends Airplane {
+    // ...
+    getCruisingAltitude() {
+      return this.getMaxAltitude() - this.getPassengerCount();
+    }
+  }
+  
+  class AirForceOne extends Airplane {
+    // ...
+    getCruisingAltitude() {
+      return this.getMaxAltitude();
+    }
+  }
+  
+  class Cessna extends Airplane {
+    // ...
+    getCruisingAltitude() {
+      return this.getMaxAltitude() - this.getFuelExpenditure();
+    }
+  }
+  ```
+
+
+
+#### 타입 검사 피하기(part 1)
+
+자바스크립트는 인자에 어떠한 타입도 사용할 수 있는 untyped 언어이다. 이로인해 타입 검사를 해야하는 경우가 생길수도 있다. 이를 피하기 위한 많은 방법 중 가장 먼저 고려해야할 방법은 일관된 API를 만드는 것이다.
+
+- Bad
+
+  ```javascript
+  function travelToTexas(vehicle) {
+    if (vehicle instanceof Bicycle) {
+      vehicle.pedal(this.currentLocation, new Location("texas"));
+    } else if (vehicle instanceof Car) {
+      vehicle.drive(this.currentLocation, new Location("texas"));
+    }
+  }
+  ```
+
+- Good
+
+  ```javascript
+  function travelToTexas(vehicle) {
+    vehicle.move(this.currentLocation, new Location("texas"));
+  }
+  ```
+
+
+
+#### 타입 검사 피하기(part 2)
+
+문자열이나 정수형 같은 기본 원시적인 타입의 값들로 작업을한다면 다형성을 사용할 수 없다. 이 경우 타입 검사가 필요하다면 타입스크립트를 사용하는 것을 고려해야한다. 타입스크립트는 자바스크립트 구문에 정적 타이핑을 제공하는 훌륭한 대안이다.
+
+- Bad
+
+  ```javascript
+  function combine(val1, val2) {
+    if (
+      (typeof val1 === "number" && typeof val2 === "number") ||
+      (typeof val1 === "string" && typeof val2 === "string")
+    ) {
+      return val1 + val2;
+    }
+  
+    throw new Error("Must be of type String or Number");
+  }
+  ```
+
+- Good
+
+  ```javascript
+  function combine(val1, val2) {
+    return val1 + val2;
+  }
+  ```
+
+
+
+#### 지나친 최적화 금지
+
+모던 브라우저들은 런타임에 보이진 않지만 내부적으로(under-the-hood)  많은 최적화를 수행한다. 따라서 필요이상의 지나친 최적화는 시간 낭비이다.
+
+- Bad
+
+  ```javascript
+  // On old browsers, each iteration with uncached `list.length` would be costly
+  // because of `list.length` recomputation. In modern browsers, this is optimized.
+  for (let i = 0, len = list.length; i < len; i++) {
+    // ...
+  }
+  ```
+
+- Good
+
+  ```javascript
+  for (let i = 0; i < list.length; i++) {
+    // ...
+  }
+  ```
+
+
+
+#### 필요없는 코드 삭제
+
+더이상 사용하지않는 코드(dead code)들은 중복 코드들만큼 나쁘며 코드베이스에 저장할 이유가 없다. 호출되지않는 코드들을 제거해야한다.
+
+- Bad
+
+  ```javascript
+  function oldRequestModule(url) {
+    // ...
+  }
+  
+  function newRequestModule(url) {
+    // ...
+  }
+  
+  const req = newRequestModule;
+  inventoryTracker("apples", req, "www.inventory-awesome.io");
+  ```
+
+- Good
+
+  ```javascript
+  function newRequestModule(url) {
+    // ...
+  }
+  
+  const req = newRequestModule;
+  inventoryTracker("apples", req, "www.inventory-awesome.io");
+  ```
+
+
+
+###### Object and Data Structures ...
+
+
+
+
 
 
 
@@ -543,4 +872,4 @@
 
 **Reference**
 
-- 
+- [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
