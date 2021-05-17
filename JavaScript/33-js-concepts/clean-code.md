@@ -555,9 +555,9 @@
 
 
 
-#### 전역 함수에 쓰지말 것
+#### 전역 함수에 쓰지말 것
 
-전역 범위를 작성하는 것은(polluting globals)은 나쁜 습관이다. 다른 라이브러리와 충돌할 가능성이 있고 API 사용자가 프로덕션시 예외가 발생할 때까지 모를수도 있다. 예를 들어 Array 메소드를 확장해 두 배열간의 차이를 나타낼수 있는 `diff` 메소드를 만들려고 할때, `Array.prototype`을 사용할 경우 다른 라이브러리와 충돌할 가능성이 있다. 이 경우 `Array.prototype`이 아닌 ES6의 class 키워드를 사용할 수 있다.
+전역 범위를 작성하는 것은(polluting globals)은 나쁜 습관이다. 다른 라이브러리와 충돌할 가능성이 있고 API 사용자가 프로덕션시 예외가 발생할 때까지 모를수도 있다. 예를 들어 Array 메소드를 확장해 두 배열간의 차이를 나타낼수 있는 `diff` 메소드를 만들려고 할때, `Array.prototype`을 사용할 경우 다른 라이브러리와 충돌할 가능성이 있다. 이 경우 `Array.prototype`이 아닌 ES6의 class 키워드를 사용할 수 있다.
 
 - Bad
 
@@ -642,7 +642,7 @@
 
 
 
-#### 조건문 캡슐화
+#### 조건문 캡슐화
 
 - Bad
 
@@ -666,7 +666,7 @@
 
 
 
-#### 부정연산자를 사용한 조건문 지양
+#### 부정연산자를 사용한 조건문 지양
 
 - Bad
 
@@ -692,7 +692,7 @@
 
 
 
-#### 다수의 조건문 사용 지양 
+#### 다수의 조건문 사용 지양 
 
 다수의 조건문이 필요한 경우 다형성 즉, class 상속(extend)을 이용하는것이 좋다. 
 
@@ -745,7 +745,7 @@
 
 
 
-#### 타입 검사 피하기(part 1)
+#### 타입 검사 피하기(part 1)
 
 자바스크립트는 인자에 어떠한 타입도 사용할 수 있는 untyped 언어이다. 이로인해 타입 검사를 해야하는 경우가 생길수도 있다. 이를 피하기 위한 많은 방법 중 가장 먼저 고려해야할 방법은 일관된 API를 만드는 것이다.
 
@@ -771,7 +771,7 @@
 
 
 
-#### 타입 검사 피하기(part 2)
+#### 타입 검사 피하기(part 2)
 
 문자열이나 정수형 같은 기본 원시적인 타입의 값들로 작업을한다면 다형성을 사용할 수 없다. 이 경우 타입 검사가 필요하다면 타입스크립트를 사용하는 것을 고려해야한다. 타입스크립트는 자바스크립트 구문에 정적 타이핑을 제공하는 훌륭한 대안이다.
 
@@ -800,7 +800,7 @@
 
 
 
-#### 지나친 최적화 금지
+#### 지나친 최적화 금지
 
 모던 브라우저들은 런타임에 보이진 않지만 내부적으로(under-the-hood)  많은 최적화를 수행한다. 따라서 필요이상의 지나친 최적화는 시간 낭비이다.
 
@@ -854,17 +854,473 @@
   inventoryTracker("apples", req, "www.inventory-awesome.io");
   ```
 
+<br>
+
+## Object and Data Structures 
+
+#### getter와 setter를 사용해라
+
+getter와 setter를 사용해 객체를 액세스하는 것이 객체의 프로퍼티를 찾는것보다 더 낫다.  그 이유는 아래와 같다.
+
+1. 객체의 속성을 얻는 것 이상의 작업이 필요할때 모든 접근자들을 변경할 필요가 없다.
+2. `set`을 사용해 쉽게 유효성 검증 절차를 만들 수 있다.
+3. 내부적으로 캡슐화가 가능하다.
+4. 코드 로깅과 에러 처리가 간편하다.
+5. 서버에서부터 객체의 프로퍼티를 가져올때 lazy load가 가능하다.
+
+- Bad
 
 
-###### Object and Data Structures ...
+```javascript
+function makeBankAccount() {
+  // ...
+
+  return {
+    balance: 0
+    // ...
+  };
+}
+
+const account = makeBankAccount();
+account.balance = 100;
+```
+
+- Good
+
+
+```javascript
+function makeBankAccount() {
+  // balance는 private한 멤버 변수이다.
+  let balance = 0;
+
+  // "getter", made public via the returned object below
+  function getBalance() {
+    return balance;
+  }
+
+  // "setter", made public via the returned object below
+  function setBalance(amount) {
+    // ... validate before updating the balance
+    balance = amount;
+  }
+
+  return {
+    // ...
+    getBalance,
+    setBalance
+  };
+}
+
+const account = makeBankAccount();
+account.setBalance(100);
+```
 
 
 
+#### 객체에 private 멤버를 만들어라
 
+클로저(ES5 이하)를 사용해 private한 멤버 변수를 만들 수 있다.
 
+- Bad
 
+```javascript
+const Employee = function(name) {
+  this.name = name;
+};
+
+Employee.prototype.getName = function getName() {
+  return this.name;
+};
+
+const employee = new Employee("John Doe");
+console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
+delete employee.name;
+console.log(`Employee name: ${employee.getName()}`); // Employee name: undefined
+```
+
+- Good
+
+```javascript
+function makeEmployee(name) {
+  return {
+    getName() {
+      return name;
+    }
+  };
+}
+
+const employee = makeEmployee("John Doe");
+console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
+delete employee.name;
+console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
+```
 
 <br>
+
+## Classes
+
+#### ES5의 함수보다 ES6의 클래스를 사용해라
+
+기존 ES5 클래스에서는 클래스 상속, 생성자 메소드를 구현하는 것이 어렵다. 만약 상속이 필요한 경우 ES6의 클래스를 사용하는 것이 좋다. 그러나 더 크고 복잡한 객체가 필요하다면 클래스보다 작은 함수를 사용하는 것이 더 낫다.
+
+- Bad
+
+```javascript
+const Animal = function(age) {
+  if (!(this instanceof Animal)) {
+    throw new Error("Instantiate Animal with `new`");
+  }
+
+  this.age = age;
+};
+
+Animal.prototype.move = function move() {};
+
+const Mammal = function(age, furColor) {
+  if (!(this instanceof Mammal)) {
+    throw new Error("Instantiate Mammal with `new`");
+  }
+
+  Animal.call(this, age);
+  this.furColor = furColor;
+};
+
+Mammal.prototype = Object.create(Animal.prototype);
+Mammal.prototype.constructor = Mammal;
+Mammal.prototype.liveBirth = function liveBirth() {};
+
+const Human = function(age, furColor, languageSpoken) {
+  if (!(this instanceof Human)) {
+    throw new Error("Instantiate Human with `new`");
+  }
+
+  Mammal.call(this, age, furColor);
+  this.languageSpoken = languageSpoken;
+};
+
+Human.prototype = Object.create(Mammal.prototype);
+Human.prototype.constructor = Human;
+Human.prototype.speak = function speak() {};
+```
+
+- Good
+
+```javascript
+class Animal {
+  constructor(age) {
+    this.age = age;
+  }
+
+  move() {
+    /* ... */
+  }
+}
+
+class Mammal extends Animal {
+  constructor(age, furColor) {
+    super(age);
+    this.furColor = furColor;
+  }
+
+  liveBirth() {
+    /* ... */
+  }
+}
+
+class Human extends Mammal {
+  constructor(age, furColor, languageSpoken) {
+    super(age, furColor);
+    this.languageSpoken = languageSpoken;
+  }
+
+  speak() {
+    /* ... */
+  }
+}
+```
+
+
+
+#### 메소드 체이닝을 사용해라
+
+메소드 체이닝은 자바스크립트에서 매우 유용한 패턴이며 제이쿼리나 lodash 같은 많은 라이브러리에서 사용된다. 메소드 체이닝을 사용하면 코드를 잘 표현할 수 있으며 간결하게 만들어준다. 클래스 함수에서 간단히 모든 함수에 `this`를 반환하는것만으로  클래스 메소드를 연결할 수 있다.
+
+- Bad
+
+```javascript
+class Car {
+  constructor(make, model, color) {
+    this.make = make;
+    this.model = model;
+    this.color = color;
+  }
+
+  setMake(make) {
+    this.make = make;
+  }
+
+  setModel(model) {
+    this.model = model;
+  }
+
+  setColor(color) {
+    this.color = color;
+  }
+
+  save() {
+    console.log(this.make, this.model, this.color);
+  }
+}
+
+const car = new Car("Ford", "F-150", "red");
+car.setColor("pink");
+car.save();
+```
+
+- Good
+
+```javascript
+class Car {
+  constructor(make, model, color) {
+    this.make = make;
+    this.model = model;
+    this.color = color;
+  }
+
+  setMake(make) {
+    this.make = make;
+    // 체이닝을 위한 this 반환
+    return this;
+  }
+
+  setModel(model) {
+    this.model = model;
+    // 체이닝을 위한 this 반환
+    return this;
+  }
+
+  setColor(color) {
+    this.color = color;
+    // 체이닝을 위한 this 반환
+    return this;
+  }
+
+  save() {
+    console.log(this.make, this.model, this.color);
+    // 체이닝을 위한 this 반환
+    return this;
+  }
+}
+
+const car = new Car("Ford", "F-150", "red").setColor("pink").save();
+```
+
+
+
+#### 상속보다는 컴포지션을 사용해라
+
+상속을 사용했을때보다 컴포지션을 사용할때의 이득이 많기 때문에 가능하다면 상속보다는 컴포지션을 사용해야 한다. ([Design pattern](https://en.wikipedia.org/wiki/Design_Patterns) by Gang of Four) 
+
+그러나 상속의 관계가 "has-a"(사용자 -> 사용자정보)가 아닌 "is-a" (사람 -> 동물)일때, 기반이 되는 베이스 클래스를 재사용할 수 있으며 베이스 클래스를 수정해 파생된 클래스들을 수정하고 싶을때는 상속을 사용하는것이 더 낫다.
+
+- Bad
+
+```javascript
+class Employee {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+
+  // ...
+}
+
+// Employees가 tax data를 가지고 있기 때문에 이 클래스는 좋지않다.
+// EmployeeTaxData는 Employee 타입이 아니다.
+class EmployeeTaxData extends Employee {
+  constructor(ssn, salary) {
+    super();
+    this.ssn = ssn;
+    this.salary = salary;
+  }
+
+  // ...
+}
+```
+
+- Good
+
+```javascript
+class EmployeeTaxData {
+  constructor(ssn, salary) {
+    this.ssn = ssn;
+    this.salary = salary;
+  }
+
+  // ...
+}
+
+class Employee {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+
+  setTaxData(ssn, salary) {
+    this.taxData = new EmployeeTaxData(ssn, salary);
+  }
+  // ...
+}
+```
+
+<br>
+
+## 객체지향 5대 원칙 SOLID
+
+#### 단일 책임 원칙(SRP, Single Responsibility Principle)
+
+클린 코드에서는 클래스를 수정하는 이유가 한 가지를 넘으면 안된다고 말한다. 이것은 하나의 클래스의 너무 많은 기능을 가득 채우는 것(jam-pack)과 같다. 이 문제는 클래스가 개념적으로 구성되어있지 않으며 클래스를 바꿔야할 많은 이유가 된다. 하나의 클래스에 너무 많은 기능들이 있고 이러한 작은 기능들을 수정이 다른 모듈들에 어떤 영향을 끼치지는지 알기 어렵기 때문에 클래스의 수정 시간을 최소화 하는것이 중요하다.
+
+- Bad
+
+```javascript
+class UserSettings {
+  constructor(user) {
+    this.user = user;
+  }
+
+  changeSettings(settings) {
+    if (this.verifyCredentials()) {
+      // ...
+    }
+  }
+
+  verifyCredentials() {
+    // ...
+  }
+}
+```
+
+- Good
+
+```javascript
+class UserAuth {
+  constructor(user) {
+    this.user = user;
+  }
+
+  verifyCredentials() {
+    // ...
+  }
+}
+
+class UserSettings {
+  constructor(user) {
+    this.user = user;
+    this.auth = new UserAuth(user);
+  }
+
+  changeSettings(settings) {
+    if (this.auth.verifyCredentials()) {
+      // ...
+    }
+  }
+}
+```
+
+
+
+#### 개방/폐쇄 원칙(OCP, Open/Closed Principle)
+
+Bertrand Meyer에 의하면 소프트웨어 엔터티들(클래스, 모듈, 함수 등)은 확장을 위해서 개방적이어야하며 수정시에는 폐쇄적이어야 한다. 이 원칙은 기본적으로 존재하는 코드의 수정 없이  사용자가 새로운 기능들을 추가할 수 있도록 허용해야한다는 것을 의미한다.
+
+- Bad
+
+```javascript
+class AjaxAdapter extends Adapter {
+  constructor() {
+    super();
+    this.name = "ajaxAdapter";
+  }
+}
+
+class NodeAdapter extends Adapter {
+  constructor() {
+    super();
+    this.name = "nodeAdapter";
+  }
+}
+
+class HttpRequester {
+  constructor(adapter) {
+    this.adapter = adapter;
+  }
+
+  fetch(url) {
+    if (this.adapter.name === "ajaxAdapter") {
+      return makeAjaxCall(url).then(response => {
+        // transform response and return
+      });
+    } else if (this.adapter.name === "nodeAdapter") {
+      return makeHttpCall(url).then(response => {
+        // transform response and return
+      });
+    }
+  }
+}
+
+function makeAjaxCall(url) {
+  // request and return promise
+}
+
+function makeHttpCall(url) {
+  // request and return promise
+}
+```
+
+- Good
+
+```javascript
+class AjaxAdapter extends Adapter {
+  constructor() {
+    super();
+    this.name = "ajaxAdapter";
+  }
+
+  request(url) {
+    // request and return promise
+  }
+}
+
+class NodeAdapter extends Adapter {
+  constructor() {
+    super();
+    this.name = "nodeAdapter";
+  }
+
+  request(url) {
+    // request and return promise
+  }
+}
+
+class HttpRequester {
+  constructor(adapter) {
+    this.adapter = adapter;
+  }
+
+  fetch(url) {
+    return this.adapter.request(url).then(response => {
+      // transform response and return
+    });
+  }
+}
+```
+
+
+
+###### Liskov Substitution Principle (LSP) ~
+
+ <br>
 
 <br>
 
