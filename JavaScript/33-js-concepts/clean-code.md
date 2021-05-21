@@ -6,6 +6,16 @@
 
 <br>
 
+## Table of Contents
+
+- [Variables](#Variables)
+- [Functions](#Functions)
+- [Objects and Data Structures](#Objects-and-Data-Structures)
+- [Classes](#Classes)
+- [SOLID](#객체지향-5대-원칙-SOLID)
+
+<br>
+
 ## Variables
 
 #### 의미를 내포하고 있으며 발음하기 쉬운 변수 이름 사용
@@ -856,7 +866,7 @@
 
 <br>
 
-## Object and Data Structures 
+## Objects and Data Structures 
 
 #### getter와 setter를 사용해라
 
@@ -866,7 +876,7 @@ getter와 setter를 사용해 객체를 액세스하는 것이 객체의 프로�
 2. `set`을 사용해 쉽게 유효성 검증 절차를 만들 수 있다.
 3. 내부적으로 캡슐화가 가능하다.
 4. 코드 로깅과 에러 처리가 간편하다.
-5. 서버에서부터 객체의 프로퍼티를 가져올때 lazy load가 가능하다.
+5. 서버에서부터 객체의 프로퍼티를 가져올때 lazy load가 가능하다.
 
 - Bad
 
@@ -917,7 +927,7 @@ account.setBalance(100);
 
 
 
-#### 객체에 private 멤버를 만들어라
+#### 객체에 private 멤버를 만들어라
 
 클로저(ES5 이하)를 사용해 private한 멤버 변수를 만들 수 있다.
 
@@ -1041,7 +1051,7 @@ class Human extends Mammal {
 
 
 
-#### 메소드 체이닝을 사용해라
+#### 메소드 체이닝을 사용해라
 
 메소드 체이닝은 자바스크립트에서 매우 유용한 패턴이며 제이쿼리나 lodash 같은 많은 라이브러리에서 사용된다. 메소드 체이닝을 사용하면 코드를 잘 표현할 수 있으며 간결하게 만들어준다. 클래스 함수에서 간단히 모든 함수에 `this`를 반환하는것만으로  클래스 메소드를 연결할 수 있다.
 
@@ -1318,11 +1328,278 @@ class HttpRequester {
 
 
 
-###### Liskov Substitution Principle (LSP) ~
+#### 리스코프 치환 원칙(LSP, Liskov Substitution Principle)
+
+리스코프 치환 원칙은 매우 간단하지만 강력한 개념이다. 이 원칙의 정의는  "만약 S가 T의 하위 타입(sub type)이면,  프로그램 속성의 변경 없이 T 타입의 객체는  S 타입의 객체로 치환될 수 있다. "는 것이다.
+
+예를 들어, 부모 클래스와 자식 클래스가 있는 경우 베이스 클래스와 자식 클래스는 잘못된 결과 없이 교환해서 사용할 수 있다.  다른 예로 수학적으로 정사각형은 직사각형이지만 상속을 통해 "is-a" 관계로 모델링할 경우 문제가 발생한다.
+
+- Bad
+
+```javascript
+class Rectangle {
+  constructor() {
+    this.width = 0;
+    this.height = 0;
+  }
+
+  setColor(color) {
+    // ...
+  }
+
+  render(area) {
+    // ...
+  }
+
+  setWidth(width) {
+    this.width = width;
+  }
+
+  setHeight(height) {
+    this.height = height;
+  }
+
+  getArea() {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Rectangle {
+  setWidth(width) {
+    this.width = width;
+    this.height = width;
+  }
+
+  setHeight(height) {
+    this.width = height;
+    this.height = height;
+  }
+}
+
+function renderLargeRectangles(rectangles) {
+  rectangles.forEach(rectangle => {
+    rectangle.setWidth(4);
+    rectangle.setHeight(5);
+    const area = rectangle.getArea(); // BAD: Returns 25 for Square. Should be 20.
+    rectangle.render(area);
+  });
+}
+
+const rectangles = [new Rectangle(), new Rectangle(), new Square()];
+renderLargeRectangles(rectangles);
+```
+
+- Good
+
+```javascript
+class Shape {
+  setColor(color) {
+    // ...
+  }
+
+  render(area) {
+    // ...
+  }
+}
+
+class Rectangle extends Shape {
+  constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+  }
+
+  getArea() {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Shape {
+  constructor(length) {
+    super();
+    this.length = length;
+  }
+
+  getArea() {
+    return this.length * this.length;
+  }
+}
+
+function renderLargeShapes(shapes) {
+  shapes.forEach(shape => {
+    const area = shape.getArea();
+    shape.render(area);
+  });
+}
+
+const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
+renderLargeShapes(shapes);
+```
+
+
+
+#### 인터페이스 분리 원칙(ISP, Interface Segregation Principle)
+
+자바스크립트에는 인터페이스가 없기 때문에  다른 원칙들 만큼 엄격하게 적용되진 않지만 타입 시스템이 없더라도 중요하고 관련있는 원칙이다.
+
+인터페이스 분리 원칙은 "클라이언트가 사용하지 않는 인터페이스에 의존하도록 강요해서는 안된다." 규정하고 있으며 인터페이스들은 덕타이핑 때문에  암시적인 contract이다.
+
+인터페이스 분리 원칙의 좋은 예는 많은 양의 설정 객체(large settings objects)가 필요한 클래스이다. 대부분 모든 설정들을 세팅을 요구하는것이 아니기때문에 클라이언트가 많은 양의 옵션을 선택할 필요가 없다. 선택적인 설정을 통해 fat 인터페이스를 만드는 것을 방지할 수 있다.
+
+- Bad
+
+```javascript
+class DOMTraverser {
+  constructor(settings) {
+    this.settings = settings;
+    this.setup();
+  }
+
+  setup() {
+    this.rootNode = this.settings.rootNode;
+    this.settings.animationModule.setup();
+  }
+
+  traverse() {
+    // ...
+  }
+}
+
+const $ = new DOMTraverser({
+  rootNode: document.getElementsByTagName("body"),
+  animationModule() {} // Most of the time, we won't need to animate when traversing.
+  // ...
+});
+```
+
+- Good
+
+```javascript
+class DOMTraverser {
+  constructor(settings) {
+    this.settings = settings;
+    this.options = settings.options;
+    this.setup();
+  }
+
+  setup() {
+    this.rootNode = this.settings.rootNode;
+    this.setupOptions();
+  }
+
+  setupOptions() {
+    if (this.options.animationModule) {
+      // ...
+    }
+  }
+
+  traverse() {
+    // ...
+  }
+}
+
+const $ = new DOMTraverser({
+  rootNode: document.getElementsByTagName("body"),
+  options: {
+    animationModule() {}
+  }
+});
+```
+
+
+
+#### 의존관계 역전 원칙(DIP, Dependency Inversion Principle)
+
+이 원칙은 두가지의 필수 요소를 가지고 있다.
+
+1. 상위 레벨의 모듈은 하위 레벨의 모듈에 의존해서는 안된다. 두 모듈 다 추상화에 의존해야 한다.
+2. 추상화는 세부사항에 의존해서는 안된다. 세부사항은 추상화에 의해 달라져야한다.
+
+자바스크립트에서는 인터페이스가 없기때문에 추상화에 의존하는것은 암시적인 contract다. 즉, 다른 객체와 클래스에 노출되는 메소드와 프로퍼티들이 암시적인 contract가 된다.  아래의 예제 코드에서의 암시적인 contract는 `InventoryTracker`에 대한 요청 모듈들이 `requestItems` 메소드를 가지게 된다는 것이다.
+
+- Bad
+
+```javascript
+class InventoryRequester {
+  constructor() {
+    this.REQ_METHODS = ["HTTP"];
+  }
+
+  requestItem(item) {
+    // ...
+  }
+}
+
+class InventoryTracker {
+  constructor(items) {
+    this.items = items;
+
+    // BAD: We have created a dependency on a specific request implementation.
+    // We should just have requestItems depend on a request method: `request`
+    this.requester = new InventoryRequester();
+  }
+
+  requestItems() {
+    this.items.forEach(item => {
+      this.requester.requestItem(item);
+    });
+  }
+}
+
+const inventoryTracker = new InventoryTracker(["apples", "bananas"]);
+inventoryTracker.requestItems();
+```
+
+- Good
+
+```javascript
+class InventoryTracker {
+  constructor(items, requester) {
+    this.items = items;
+    this.requester = requester;
+  }
+
+  requestItems() {
+    this.items.forEach(item => {
+      this.requester.requestItem(item);
+    });
+  }
+}
+
+class InventoryRequesterV1 {
+  constructor() {
+    this.REQ_METHODS = ["HTTP"];
+  }
+
+  requestItem(item) {
+    // ...
+  }
+}
+
+class InventoryRequesterV2 {
+  constructor() {
+    this.REQ_METHODS = ["WS"];
+  }
+
+  requestItem(item) {
+    // ...
+  }
+}
+
+// By constructing our dependencies externally and injecting them, we can easily
+// substitute our request module for a fancy new one that uses WebSockets.
+const inventoryTracker = new InventoryTracker(
+  ["apples", "bananas"],
+  new InventoryRequesterV2()
+);
+inventoryTracker.requestItems();
+```
 
  <br>
 
 <br>
+
+###### .. Testing, Concurrency, Error Handling, Formatting, Commentsm, Translation
 
 ------
 
