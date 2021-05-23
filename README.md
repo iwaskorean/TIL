@@ -6,7 +6,11 @@
 
 <br>
 
+## Web and Internet
 
+- [How the internet works](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/how-the-internet-works.md)
+
+<br>
 
 ## Front-end
 
