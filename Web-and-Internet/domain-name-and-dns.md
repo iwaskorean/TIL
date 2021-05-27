@@ -1,6 +1,6 @@
 # Domain Name
 
-### What a Domain Name is?
+### What is a Domain Name?
 
 도메인 이름이란 웹 사이트를 방문하기 위해 브라우저 URL 표시줄에 입력하는 웹 사이트의 주소이다. 간단히 말해서 웹 사이트가 집이라면 도메인 이름은 그 집의 주소가 되는 것이다.
 
@@ -8,7 +8,7 @@
 
 <br>
 
-### How Domain Names Actually work?
+### How does Domain Name Actually work?
 
 ![i](https://www.wpbeginner.com/wp-content/uploads/2017/09/howdomainswork.png)
 
@@ -42,7 +42,7 @@
 
 
 
-도메인 이름은 기술적으로 lable이라는 부분들로 구성되며 `.`으로 구분된다. 예를 들어 `www.example.com`은 최상위 도메인(TLD)인 .com에 포함되며 오른쪽에서 왼쪽으로 계층 구조가 형성된다.  example.com의 하위 레이블인 www는 `www.example.com`을 생성하기 위한 서브 레이블이다.
+도메인 이름은 기술적으로 lable이라는 부분들로 구성되며 `.`으로 구분된다. 예를 들어 `www.example.com`은 최상위 도메인(TLD)인 .com에 포함되며 오른쪽에서부터 왼쪽으로 계층 구조가 형성된다.  example.com의 하위 레이블인 www는 `www.example.com`을 생성하기 위한 서브 레이블이다.
 
 최상위 도메인(TLD) 중 가장 인기있는 것은 것은 .com 이다. 그 외에도 .org, .net, .info, .io 등이 있다. 그러나 일반적으로 상업용 사이트를 나타내는 .com 도메인 확장자를 사용하는 것이 좋다. 
 

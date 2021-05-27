@@ -1,6 +1,6 @@
 # HTTP Messages
 
-> *이전 포스트 : [HTML Overivew](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/http.md)*
+> *이전 포스트 : [HTTP Overivew](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/http.md)*
 
 
 HTTP 메시지는 서버와 클라이언트가 데이터를 교환하는 방식이다. 메시지에는 요청(request)와 응답(response)가 있으며 요청은 클라이언트가 특정 동작을 위해 서버로 보내는 메시지이며 응답은 요청에 대한 서버의 회신이다.
