@@ -6,7 +6,7 @@ Hook은 React 16.8 버전부터 새롭게 추가된 상태 및 생명주기 관�
 
 ## useState
 
-useState는 상태 관리를 위한 Hook이다.
+useState는 상태 관리를 위한 hook이다.
 
 
 
@@ -16,7 +16,7 @@ useState는 상태 관리를 위한 Hook이다.
 const [<상태 저장 변수>, <상태 갱신 함수>] = useState(<상태 초기 값>);
 ```
 
-초기 상태 생성시 상태 저장 변수의 초기 값을  array, number, boolean 등 다양한 타입 및 값으로 지정할 수 있다. 또한 useState는 값이 아닌 함수를 인자로 가질수 있는데 이 경우, 첫 렌더링될때만 실행된다.
+초기 state 생성시 상태 저장 변수의 초기 값을  array, number, boolean 등 다양한 타입 및 값으로 지정할 수 있다. 또한 useState는 값이 아닌 함수를 인자로 가질수 있는데 이 경우, 첫 렌더링될때만 실행된다.
 
 <br>
 
@@ -28,7 +28,7 @@ const [count, setCount] = useState(0)
 setCount(prevCount => prevCount + 1)
 ```
 
-초기 상태 생성시 선언한 상태 갱신 함수를 통해 상태 저장 변수의 값을 갱신할 수 있다.
+초기 state 생성시 선언한 상태 갱신 함수를 통해 상태 저장 변수의 값을 갱신할 수 있다.
 
 <br>
 
@@ -79,7 +79,7 @@ useEffect는 클래스 컴포넌트의 라이프사이클 메소드를 대체하
 
 ### Creating Your First Side Effect
 
-네트워크 요청, 데이터 가져오기, 구독 설정, 수동으로 컴포넌트의 DOM을 수정하는 등 현재 함수의 범위에 벗어난 것에 영향을 끼치는 것을 side effect라고 한다. useEffect는 이러한 side effect를 처리를 위해 사용된다.
+네트워크 요청, 데이터 가져오기, 구독 설정, 수동으로 컴포넌트의 DOM을 수정하는 등 현재 함수의 범위에 벗어난 것에 영향을 끼치는 것을 side effect라고 한다. useEffect는 이러한 side effect 처리를 위해 사용된다.
 
 
 
@@ -146,7 +146,7 @@ useEffect(() => {
 
 ## useMemo & useCallback
 
-useMemo와 useCallback hook을 이해하기위해서는 memoization에 대해 알아야한다.
+useMemo와 useCallback hook을 이해하기 위해서는 memoization에 대해 알아야한다.
 
 <br>
 
@@ -167,7 +167,7 @@ function slow(a) {
 }
 ```
 
-렌더링 될 때마다 모든 컴포넌트 로직이 재계산되고 로직의 계산속도가 느린 경우 급격한 속도저하가 일어나는 매우 일반적인 문제를 해결하기 위한 hook이 바로 useMemo와 useCallback이다.
+렌더링 될 때마다 모든 컴포넌트 로직이 재계산되고 로직의 계산속도가 느린 경우 급격한 속도저하가 일어나는 문제를 해결하기 위한 hook이 바로 useMemo와 useCallback이다.
 
 <br>
 
@@ -207,11 +207,11 @@ useMemo(() => {
 }, [a, b])
 ```
 
-위 코드와 같이 둘 다 동일한 값을 반환하지만, useCallback은 전달된 함수를 반환하고 useMemo는 전달된 함수의 결과를 반환한다.
+위 코드에서 useCallback과 useMemo는 동일한 값을 반환하지만, useCallback은 전달된 함수를 반환하고 useMemo는 전달된 함수의 결과를 반환한다.
 
 <br>
 
-useMemo와 마찬가지로 useEffect도 referential equality를 유지하기위해 사용된다.
+또한 useMemo와 useCallback은 referential equality를 유지하기위해 사용된다.
 
 ```javascript
 function Parent() {
@@ -249,15 +249,193 @@ function Child({ onLoad }) {
 
 <br>
 
+<br>
+
 ## useRef
 
-...
+useRef는 DOM 요소에 직접 접근하고 조작하는데 유용한 hook이다. 또한 렌더링간 데이터를 유지할 수 있다.
+
+<br>
+
+useRef를 사용하기 위해선 먼저 ref를 초기화해야한다.
+
+```
+useRef(initialValue)
+```
+
+useRef는 current라는 단일 프로퍼티를 가지고 있는 객체를 반환하는데 초기값을 current 프로퍼티에 할당한다.
+
+```javascript
+const myRef = useRef(0);
+
+console.log(myRef);
+// { current: 0 }
+```
+
+<br>
+
+useRef는 선언후 다시 렌더링이 되어도 동일한 참조가 지속된다. 또한 참조가 변경되어도 컴포넌트를 다시 렌더링하지 않는다. 즉, ref는 렌더링간의 지속되는 값을 저장하는 객체이다.
+
+```javascript
+function State() {
+  const [rerenderCount, setRerenderCount] = useState(0);
+
+  useEffect(() => {
+    setRerenderCount(prevCount => prevCount + 1);
+  });
+
+  return <div>{rerenderCount}</div>;
+}
+```
+
+```javascript
+function Ref() {
+  const rerenderCount = useRef(0);
+
+  useEffect(() => {
+    rerenderCount.current = rerenderCount.current + 1;
+  });
+
+  return <div>{rerenderCount.current}</div>;
+}
+```
+
+`State` 컴포넌트에서는 state가 업데이트되면 컴포넌트가 다시 렌더링되지만 `Ref` 컴포넌트의 ref는 값이 변경되어도 다시 렌더링되지않는다.
+
+<br>
+
+### How to use Refs
+
+ref는 일반적으로 DOM 요소를 참조할때 사용된다. 예를 들어 버튼을 클릭할 때마다 `input` 요소에 커서를 이동하고 싶다면 ref를 사용해 아래와 같은 코드를 작성할 수 있다.
+
+```javascript
+function Component() {
+  const inputRef = useRef(null)
+
+  const focusInput = () => {
+    inputRef.current.focus()
+  }
+
+  return (
+    <>
+      <input ref={inputRef} />
+      <button onClick={focusInput}>Focus Input</button>
+    </>
+  )
+}
+```
+
+<br>
+
+### Using Refs beyond the DOM
+
+ref는 렌더링간 일종의 저장공간으로 사용할 수 있다. 
+
+```javascript
+unction Component() {
+  const [name, setName] = useState('Kyle')
+  const previousName = useRef(null)
+
+  useEffect(() => {
+    previousName.current = name
+  }, [name])
+
+  return (
+    <>
+      <input value={name} onChange={e => setName(e.target.value)} />
+      <div>{previousName.current} => {name}</div>
+    </>
+  )
+}
+```
+
+위 예제는 상태 변수 `name`이 변경될 때 마다 ref를 업데이트 해 상태  변수 `name`의 이전 값을 저장하도록 하는 코드이다.
+
+<br>
 
 <br>
 
 ## useContext
 
-..
+### What is Context API?
+
+리액트에서 state는 데이터와 props를 저장하고 컴포넌트들간의 데이터 전달하기 위해 사용된다. 그러나 많은 컴포넌트들이 중첩된 구조에서 state를 전달하려면 복잡한 단계를 여러번 거쳐야해 유지보수에 어려움이 있다.
+
+Context API를 사용하면 컴포넌트를 통해 데이터를 전달할 필요없이 Context 내 중첩된 모든 컴포넌트에서 사용할 수 있는 데이터를 지정할 수 있다. 이 데이터는 Context 내부 어디에서나 사용할 수 있는 semi-global state인 것이다.
+
+<br>
+
+```javascript
+const ThemeContext = React.createContext()
+
+function App() {
+  const [theme, setTheme] = useState('dark')
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <ChildComponent />
+    </ThemeContext.Provider>
+  )
+}
+```
+
+```javascript
+function ChildComponent() {
+  return <GrandChildComponent />
+}
+```
+
+```javascript
+class GrandChildComponent {
+  render() {
+    return (
+      <ThemeContext.Consumer>
+        {({ theme, setTheme }) => {
+          return (
+            <>
+              <div>The theme is {theme}</div>
+              <button onClick={() => setTheme('light')}>
+                Change To Light Theme
+              </button>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
+  }
+}
+```
+
+위 코드에서 `React.createContext`를 사용해 두 부분을 가진 변수를 생성했다.
+
+첫번째 부분은 중첩된 모든 컴포넌트들에 값을 제공하는 provider이다. 위 코드의 경우 `theme` 및 `setTheme`이 있는 단일 객체이다.
+
+두번째 부분은 consumer이다. consumer에서 Context의 값에 액세스하려면 코드를 래핑해야한다. 래핑된 컴포넌트 자식요소인 함수의 인자로 Context 값을 제공한다. 
+
+그러나 두번째 부분에서 Context의 값을 얻기위해 함수를 포함한 컴포넌트에 JSX를 래핑을함으로써 코드 중첩 및 복잡한 레이어들이 추가된다는 문제점이 있다.
+
+<br>
+
+### useContext
+
+useContext를 사용하면 함수형 컴포넌트에서 Context를 사용하기위해 consumer에서 JSX 코드를 래핑할 필요 없이 Context를 useContext hook에 전달한다.
+
+```javascript
+function GrandChildComponent() {
+  const { theme, setTheme } = useContext(ThemeContext)
+
+  return (
+    <>
+      <div>The theme is {theme}</div>
+      <button onClick={() => setTheme('light')}>
+        Change To Light Theme
+      </button>
+    </>
+  )
+}
+```
+
+useContext를 사용함으로써 기존 consumer 부분의 복잡한 중첩을 제거할 수 있다. 이제 Context는 Context를 호출하는 일반 함수처럼 동작하며 Context 내부의 값을 제공한다. useContext의 provider를 설정하는 것은 기존 Context API에서와 완전히 동일하다.
 
 <br>
 
@@ -271,3 +449,5 @@ function Child({ onLoad }) {
 - [Everything You Need To Know About useState](https://blog.webdevsimplified.com/2020-04/use-state/)
 - [Everything You Need To Know About useEffect](https://blog.webdevsimplified.com/2020-04/use-effect/)
 - [How To Use Memoization To Drastically Increase React Performance](https://blog.webdevsimplified.com/2020-05/memoization-in-react/)
+- [How To Use Refs In React With Hooks](https://blog.webdevsimplified.com/2020-05/use-ref/)
+- [How To Use Context In React With Hooks](https://blog.webdevsimplified.com/2020-06/use-context/)
