@@ -28,6 +28,7 @@
 - ### **JavaScript**
 
   - [Regular Expression](https://github.com/SewookHan/TIL/blob/main/JavaScript/regular-expression.md)
+  - [Destructruing Assignment](https://github.com/SewookHan/TIL/blob/main/JavaScript/destructuring.md)
   - [Bubbling and Capturing](https://github.com/SewookHan/TIL/blob/main/JavaScript/bubbling-and-capturing.md)
   - [33 JS Concepts](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts) 
     - [Call Stack](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/call-stack.md)
