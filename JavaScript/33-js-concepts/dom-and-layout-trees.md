@@ -1,26 +1,24 @@
 #  DOM and Layout Trees
 
+DOM이란 문서 객체 모델(Document Object Model)의 약자로서 문서 내의 요소를 정의하고 요소에 접근하는 방법을 정의하는 모델이다.
+
 <br>
 
 ### DOM(Document Object Model)
 
-- HTML/XML 문서를 표현하기 위한 인터페이스
-
-- 웹 페이지에 요소를 배치할때 브라우저에 대한 참조를 제공한다.
-
-- 브라우저가 문서를 읽은 후에 문서 객체 모델이라는 표현 트리(representational tree)를 만들고 트리에 액세스 가능한 방법을 정의한다.
-
-  <br>
-
-- #### Advantages
-
-  - 새로고칠 필요 없이 페이지의 데이터를 업데이트 할 수 있다.
-
-  - 사용자가 커스터마이징한 앱을 만들고 새로고침 없이 페이지 레이아웃을 변경 할 수 있다.
-
-  - 드래그, 이동, 삭제 등 요소들을 조작 할 수 있다.
+브라우저는 문서를 읽은 후 DOM이라는 표현 트리(representational tree)를 만들고 트리에 접근 가능한 방법을 정의한다. 즉, DOM은 HTML/XML 문서를 표현하기 위한 인터페이스이며 구조화 된 표현이다.
 
 <br>
+
+### Advantages
+
+DOM의 아래와 같은 장점을 가진다.
+
+- 새로고칠 필요 없이 페이지의 데이터를 업데이트 할 수 있다.
+
+- 사용자가 커스터마이징한 앱을 만들고 새로고침 없이 페이지 레이아웃을 변경 할 수 있다.
+
+- 드래그, 이동, 삭제 등 요소들을 조작 할 수 있다.
 
 <br>
 
@@ -28,29 +26,23 @@
 
 ![img](https://cdn-media-1.freecodecamp.org/images/3n6SPcMH0mmG6cFeB3SJBEA-9Yyfgp3xYZ7u)
 
-- 브라우저가 문서를 읽은 후 생성한 노드로 구성된 표현트리
+위 이미지는 브라우저가 문서를 읽은 후 생성한 노드로 구성된 표현트리이다. 요소가 DOM에 배치되는위치를 노드(node)라고 한다.
 
-- 요소가 DOM에 배치되는 위치를 노드(node)라고 한다.
+또한 트리는 아래와 같은 요소들로 구성된다.
 
-  <br>
+- Document : HTML 문서를 다룬다.
 
-- ##### 트리를 구성하는 중요한 요소들
+- Element : HTML 이나 XML 내부의 태그들을 DOM 요소로 변환한다.
 
-  - Document : HTML 문서를 다룬다.
+- Text : 태그들의 내용(content)
 
-  - Element : HTML 이나 XML 내부의 태그들을 DOM 요소로 변환한다.
-
-  - Text : 태그들의 내용(content)
-
-  - Attribute : 특정한 HTML 요소가 가지고 있는 속성
-
-<br>
+- Attribute : 특정한 HTML 요소가 가지고 있는 속성
 
 <br>
 
 ### To Access Elements
 
-- ID, Class, HTML 태그 및 선택자를 이용해 DOM의 요소에 액세스하는 방법
+ID, Class, HTML 태그 및 선택자를 이용해 DOM의 요소에 접근할 수 있다.
 
 | Gets              | Method                     |
 | ----------------- | -------------------------- |
@@ -62,15 +54,11 @@
 
 <br>
 
-<br>
-
 ### To Traverse the DOM
 
-- HTML 문서의 루트 노드 및 부모 / 자식 / 형제의 속성을 이용해 액세스하는 방법
+프로퍼티를 이용해 HTML 문서의 루트 노드 및 부모/자식/형제의 속성을 이용해 접근할 수 있다.
 
-<br>
-
-- ##### 루트 노드
+- 루트 노드
 
   | Property                   | Node        | Node Type       |
   | -------------------------- | ----------- | --------------- |
@@ -79,18 +67,14 @@
   | `document.head`            | `head`      | `ELEMENT_NODE`  |
   | `document.body`            | `body`      | `ELEMENT_NODE`  |
 
-  <br>
-
-- ##### 부모 노드
+- 부모 노드
 
   | Property        | Gets                |
   | --------------- | ------------------- |
   | `parentNode`    | Parent Node         |
   | `parentElement` | Parent Element Node |
 
-  <br>
-
-- ##### 자식 노드
+- 자식 노드
 
   | Property            | Gets                     |
   | ------------------- | ------------------------ |
@@ -101,9 +85,7 @@
   | `firstElementChild` | First Child Element Node |
   | `lastElementChild`  | Last Child Element Node  |
 
-  <br>
-
-- ##### 형제 노드
+- 형제 노드
 
   | Property                 | Gets                          |
   | ------------------------ | ----------------------------- |
@@ -114,15 +96,11 @@
 
 <br>
 
-<br>
-
 ### To Make Changes to the DOM
 
-- 노드를 추가, 변경, 교체 및 삭제하는 방법
+메소드와 프로퍼티를 이용해 노드를 추가, 변경, 교체 및 삭제할 수 있다.
 
-  <br>
-
-- ##### 노드 생성
+- 노드 생성
 
   | Property/Method    | Description                                    |
   | ------------------ | ---------------------------------------------- |
@@ -131,9 +109,7 @@
   | `node.textContent` | Get or set the text content of an element node |
   | `node.innerHTML`   | Get or set the HTML content of an element      |
 
-  <br>
-
-- ##### 노드 삽입
+- 노드 삽입
 
   | Property/Method       | Description                                                  |
   | --------------------- | ------------------------------------------------------------ |
@@ -141,16 +117,12 @@
   | `node.insertBefore()` | Insert a node into the parent element before a specified sibling node |
   | `node.replaceChild()` | Replace an existing node with a new node                     |
 
-  <br>
-
-- ##### 노드 삭제
+- 노드 삭제
 
   | Method               | Description       |
   | -------------------- | ----------------- |
   | `node.removeChild()` | Remove child node |
   | `node.remove()`      | Remove node       |
-
-<br>
 
 <br>
 
