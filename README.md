@@ -9,11 +9,12 @@
 ## Web and Internet
 
 - [How the internet works](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/how-the-internet-works.md)
-- [HTTP Overview](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/http.md)
+- [HTTP](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/http.md)
 - [HTTP Messages](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/http-message.md)
 - [HTTPS](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/https.md)
 - [Domain Name and DNS](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/domain-name-and-dns.md)
 - [WebSocket](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/websocket.md)
+- [SSH](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/ssh.md)
 
 <br>
 
