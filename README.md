@@ -15,6 +15,7 @@
 - [Domain Name and DNS](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/domain-name-and-dns.md)
 - [WebSocket](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/websocket.md)
 - [SSH](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/ssh.md)
+- [CORS](https://github.com/SewookHan/TIL/blob/main/Web-and-Internet/cors.md)
 
 <br>
 
