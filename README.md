@@ -89,7 +89,8 @@
 
 - ### Next.js
 
-  - [overview](https://github.com/SewookHan/TIL/blob/main/Nextjs/overview.md)
+  - [Overview](https://github.com/SewookHan/TIL/blob/main/Nextjs/overview.md)
+  - [Data Fetching](https://github.com/SewookHan/TIL/blob/main/Nextjs/data-fetching.md)
 
 
 
