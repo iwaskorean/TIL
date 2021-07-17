@@ -10,7 +10,9 @@ SSR은 모든 페이지 리소스들이 브라우저가 아닌 서버에서 렌�
 
 SSR이 이루어지는 과정은 아래와 같다.
 
-![ssr](https://cdn-bledd.nitrocdn.com/sMegMNkwPgLIyVZIoLggYdSAqxrSUlEd/assets/static/optimized/rev-2474287/wp-content/uploads/2020/08/Picture1.jpg)
+![ssr](https://cdn-bledd.nitrocdn.com/sMegMNkwPgLIyVZIoLggYdSAqxrSUlEd/assets/static/optimized/rev-67e96db/wp-content/uploads/2020/08/Picture1.jpg)
+
+
 
 1. 사용자가 브라우저를 통해 웹 페이지를 요청한다.
 2. 브라우저는 렌더링된 HTML, CSS 코드가 있는 서버에 연결한다.
@@ -54,7 +56,7 @@ CSR은 모든 페이지 리소스들이 서버가 아닌 클라이언트의 브�
 
 CSR이 이루어지는 과정은 아래와 같다.
 
-![CSR](https://cdn-bledd.nitrocdn.com/sMegMNkwPgLIyVZIoLggYdSAqxrSUlEd/assets/static/optimized/rev-2474287/wp-content/uploads/2020/08/Picture2.jpg)
+![CSR](https://cdn-bledd.nitrocdn.com/sMegMNkwPgLIyVZIoLggYdSAqxrSUlEd/assets/static/optimized/rev-67e96db/wp-content/uploads/2020/08/Picture2.jpg)
 
 1. 사용자가 브라우저를 통해 웹 페이지를 요청한다.
 2. 서버와 CDN은 요청에 대해 필수 자바스크립트 파일들의 링크를 포함하고 있는 HTML 페이지로 응답한다. 
@@ -71,7 +73,7 @@ CSR이 이루어지는 과정은 아래와 같다.
 CSR의 장점은 다음과 같다.
 
 - 빠른 렌더링 속도 : 초기 렌더링 처리 속도는 느리지만, 그 이후의 렌더링들은 빠르게 처리된다.
-- 웹 사이트의 빠른 탐색 제공 : 렌더링 시 placeholder가 먼저 로드되기 때문에 빠른 탐색이 가능하다.
+- 웹 사이트의 빠른 탐색 제공 : 렌더링 시 placeholder가 먼저 로드되기 때문에 빠른 탐색이 가능하다.
 - 적은 서버 부하 : 클라이언트의 브라우저에서 자바스크립트가 실행되므로 서버에는 비교적 적은 부하가 걸리게된다.
 - 인터랙션
 
