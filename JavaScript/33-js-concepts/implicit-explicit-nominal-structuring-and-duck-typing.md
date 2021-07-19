@@ -1,8 +1,8 @@
-# Implicit / Explicit Coericion and Duck Typing
+# Implicit / Explicit Coercion and Duck Typing
 
 
 
-## Implicit Type Coericion 
+## Implicit Type Coercion 
 
 암시적 변환이란 자바스크립트가 예상하지 못한(unexpected) 값 타입을 예상되는 값 타입으로 강제 변환하려는 시도이다. 즉, 암시적 변환은 자바스크립트에 의해 자동으로 일어나는 변환이다.
 
@@ -72,7 +72,7 @@ const baz = {
 baz + "!" // "I'm object baz!"
 ```
 
-모든 자바스크립트 객체들은 `toString` 메소드를 상속받는다. `toString` 메소드는  객체를 문자열로 변환하기 위해 호출된다.
+모든 자바스크립트 객체들은 `toString` 메소드를 상속받는다. `toString` 메소드는  객체를 문자열로 변환하기 위해 호출된다.
 
 `toString` 메소드의 결과값은 문자열 연결 및 numeric expression에서 사용할 수 있다.
 
