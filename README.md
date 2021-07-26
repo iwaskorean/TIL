@@ -96,7 +96,7 @@
 
 - ### HTML
 
-  - [Sementics](https://github.com/SewookHan/TIL/blob/main/HTML/sementics.md)
+  - [Semantics](https://github.com/SewookHan/TIL/blob/main/HTML/sementics.md)
   - [meta tag](https://github.com/SewookHan/TIL/blob/main/HTML/meta-tag.md)
 
 

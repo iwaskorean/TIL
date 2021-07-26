@@ -2,13 +2,13 @@
 
 `<meta>` 태그는 HTML 문서의 메타데이터를 정의하는 태그이다. 메타데이터란 데이터에 대한 데이터 즉, 다른 데이터를 설명하는 데이터이다. 
 
- `<meta>` 태그는 항상 `<head>` 요소 내부에 위치해야하며 character set, 페이지 설명, 키워드, 페이지 작성자, viewport 설정 등의 메타데이터의 정의를 정의한다. 이렇게 정의된 HTML 문서의 메타데이터들은 브라우저, 검색 엔진 등의 웹 서비스에서 사용된다.
+ `<meta>` 태그는 항상 `<head>` 요소 내부에 위치해야하며 character set, 페이지 설명, 키워드, 페이지 작성자, viewport 설정 등의 메타데이터를 정의한다. 이렇게 정의된 HTML 문서의 메타데이터들은 브라우저, 검색 엔진 등의 웹 서비스에서 사용된다.
 
 <br>
 
 ### Attribute
 
-`<meta>` 태그는 다음과 같은 속성을 가진다.
+`<meta>` 태그는 다음과 같은 프로퍼티를 가진다.
 
 - charset : HTML 문서의 문자 인코딩 정보를 지정한다.
 - content : http-equivor 또는 name 속성과 관련된 값을 지정한다.
@@ -43,13 +43,13 @@
 <meta name="author" content="Sewook Han" />
 ```
 
-**http-equiv 속성을 이용해 Content-Type 지정**
+**http-equiv 프로퍼티를 이용해 Content-Type 지정**
 
 ```javascript
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 ```
 
-**http-equiv 속성을 이용해 30초마다 새로고침 설정**
+**http-equiv 프로퍼티를 이용해 30초마다 새로고침 설정**
 
 ```javascript
 <meta http-equiv="refresh" content="30" />
@@ -61,9 +61,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
-viewport란 사용자들이 볼 수 있는 웹 페이지 영역이다. 스마트폰 화면이 컴퓨터 화면보다 작듯이 디바이스마다 viewport가 다르다.
+viewport란 사용자들이 볼 수 있는 웹 페이지 영역이다. 스마트폰 화면이 데스크톱 모니터 화면보다 작듯이 디바이스마다 viewport가 다르다.
 
-`viewport` 메타데이터의 `content` 속성은 디바이스 스크린 폭에 따라 페이지 폭을 설정하는  `width=device-width`와 페이지가 브라우저에 의해 처음 로드될 때 줌 레벨을 설정하는 `initial-scale=1.0`가 있다.
+`viewport` 메타데이터의 `content` 프로퍼티에서  `width=device-width`는 디바이스 스크린 폭에 따라 페이지를 설정하는 값이며, `initial-scale=1.0`는 페이지가 브라우저에 의해 처음 로드될 때 줌 레벨을 설정하는 값이다.
 
  <br>
 
