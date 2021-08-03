@@ -2,16 +2,12 @@
 
 > The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
-<br>
-
-### Introduction
-
 ![promise](https://res.cloudinary.com/practicaldev/image/fetch/s--SVoAXeRc--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/upv1hrcs93qsdmkehqs4.png)
 
 
-콜백은 어떤 일이 발생하거나 완료되었을때 동작되는 함수이다. 만약 비동기 요청을 해야하는 경우 성공하거나 또는 실패할 수 있다. 이와같은 두 가능성은 `resolves` 또는 `rejects` 파라미터로 나타낼 수 있다.
+콜백은 어떤 일이 발생하거나 완료되었을때 동작되는 함수이다. 만약 비동기 요청을 해야하는 경우 요청의 결과가 성공하거나 또는 실패할 수 있다. 이와 같은 두 가능성은 `resolves` 또는 `rejects` 파라미터로 나타낼 수 있다.
 
-Promise를 사용하면 `then`으로 체이닝 구조를 만들고 에러를 위해 `catch`를 사용해 직관적인 방식으로 콜백을 쉽게 연결 할 수 있으며 콜백 지옥(callback hell)을 피할 수 있다.
+Promise를 사용하면 `then`으로 체이닝 구조를 만들고 에러 처리를 위해 `catch`를 사용해 직관적인 방식으로 콜백을 쉽게 연결 할 수 있으며 콜백 지옥(callback hell)을 피할 수 있다.
 
 Promise는 아래와 같은 3가지의 상태를 갖는다.
 
@@ -21,7 +17,6 @@ Promise는 아래와 같은 3가지의 상태를 갖는다.
 
 - 거절(rejected) : 작업이 실패했음을 의미한다.
 
-<br>
 <br>
 
 ### Using `new Promise`
@@ -36,7 +31,6 @@ let foo = Promise.resolve('foo')
 foo.then(value => console.log(value))
 // foo
 ```
-<br>
 <br>
 
 ## Examples
