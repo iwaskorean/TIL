@@ -106,5 +106,6 @@
 
   - [Pseudo class vs Pseudo element](https://github.com/SewookHan/TIL/blob/main/CSS/pseudo-classes-vs-pseudo-elements.md)
   - [BEM Methodology](https://github.com/SewookHan/TIL/blob/main/CSS/bem-methodology.md)
+  - [Normalize.css](https://github.com/SewookHan/TIL/blob/main/CSS/normalize-css.md)
 
 <br>
