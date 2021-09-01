@@ -22,6 +22,7 @@
 ## Operating System
 
 - [What is Operating  System?](https://github.com/SewookHan/TIL/blob/main/Operating-System/overview.md)
+- [Semaphore](https://github.com/SewookHan/TIL/blob/main/Operating-System/what-is-semaphore.md)
 
 <br>
 
