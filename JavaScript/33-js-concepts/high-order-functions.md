@@ -5,12 +5,11 @@
 - 1급 객체(first class object) : 객체(obejct)를 1급 시민(first class citizen)으로써 취급
 
 - 1급 시민(first class citizen)의 조건
-- 변수(variable)에 담을 수 있다.
-  
-- 인자(parameter)로 전달할 수 있다.
-  
-- 반환값(return value)으로 전달할 수 있다.
-  
+  - 변수(variable)에 담을 수 있다.
+    
+  - 인자(parameter)로 전달할 수 있다.
+    
+  - 반환값(return value)으로 전달할 수 있다.
 
 따라서 함수형 프로그래밍 패턴인 고차 함수(HoF)가 가능하며, 고차 함수는 다른 함수를 인자로 받거나 리턴 할 수 있는 함수를 말한다.
 
