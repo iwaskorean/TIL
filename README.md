@@ -27,6 +27,7 @@
 - [CPU Scheduling Algorithms](https://github.com/SewookHan/TIL/blob/main/Operating-System/cpu-scheduling-algorithms.md)
 - [User Mode vs Kernel Mode](https://github.com/SewookHan/TIL/blob/main/Operating-System/user-mode-and-kernel-mode.md)
 - [Microkernel](https://github.com/SewookHan/TIL/blob/main/Operating-System/microkernel.md)
+- [System Call](https://github.com/SewookHan/TIL/blob/main/Operating-System/system-call.md)
 
 <br>
 
