@@ -94,11 +94,11 @@ npm install yarn --global
 
 ### lock file
 
-yarn은 항상 lock file을 생성하지만 npm은 자동으로 lock file을 생성하지 않는다. npm의 lock file인 `pacakge-lock.json`은 npm으로 `package.json` 파일이나 `node_modules` 트리를 수정할때 생성된다.
+yarn은 항상 lock file을 생성하지만 npm은 자동으로 lock file을 생성하지 않는다. npm의 lock file인 `pacakge-lock.json`은 npm으로 `package.json` 파일이나 `node_modules` 트리를 수정할때 생성된다.
 
 ### Fetching packages
 
-npm은 `npm install` 커맨드를 통해 npm 레지스트리에서 패키지를 가져오는 반면 yarn은 의존성을 로컬에 저장하고 `yarn add` 커맨드를 통해 디스크에서 가져온다(특정 버전의 의존성이 현재 로컬에 있을때)
+npm은 `npm install` 커맨드를 통해 npm 레지스트리에서 패키지를 가져오는 반면 yarn은 의존성을 로컬에 저장하고 `yarn add` 커맨드를 통해 디스크에서 가져온다(특정 버전의 의존성이 현재 로컬에 있을때)
 
 <br>
 
@@ -128,6 +128,40 @@ npm은 `npm install` 커맨드를 통해 npm 레지스트리에서 패키지를
 
 <br>
 
+## devDependencies vs dependencies
+
+패키지 관리자를 통해 프로젝트에 dependency를 저장하게 되면 manifest file에 dependencies 또는 devDependencies에 dependency의 이름과 버전이 업데이트된다.
+
+<br>
+
+### devDependencies
+
+다음과 같은 커맨드로 dependency를 devDependencies로 설치할 수 있다.
+
+```
+npm install 'package-name' --save-dev 
+	or
+yarn add --dev 'package-name'
+```
+
+devDependencies은 개발중에만 필요한 모듈이며 nodemon, babel, eslint나 chai, mocha와 같은 테스팅 프레임워크들이 해당된다.
+
+<br>
+
+### dependencies
+
+다음과 같은 커맨드로 dependency를 dependencies로 설치할 수 있다.
+
+```
+npm install 'package-name' --save 
+	or
+yarn add 'package-name'
+```
+
+devDependencies와 비교해 dependencies는 런타임에도 필요한 모듈이라는 차이가 있다. react, redux, express, axios 등과 같은 패키지들이 dependencies에 해당된다.
+
+<br>
+
 <br>
 
 ------
@@ -136,6 +170,7 @@ npm은 `npm install` 커맨드를 통해 npm 레지스트리에서 패키지를
 
 - [An introduction to how JavaScript package managers work](https://www.freecodecamp.org/news/javascript-package-managers-101-9afd926add0a/)
 - [Difference between npm and yarn](https://www.geeksforgeeks.org/difference-between-npm-and-yarn/)
+- [NPMmmm #1: Dev Dependencies, Dependencies](https://medium.com/@dylanavery720/npmmmm-1-dev-dependencies-dependencies-8931c2583b0c)
 
  
 
