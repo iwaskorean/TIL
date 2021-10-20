@@ -44,21 +44,131 @@ cypress와 같은 프레임워크를 통해 테스트할 수 있다.
 
 ### Testing Library
 
-테스팅 라이브러리는 테스트를 사용자 관점에서 접근한다. 그렇기 때문에 최종적으로 통합 테스트로 연결된다.
+테스팅 라이브러리는 테스트를 사용자 관점에서 접근한다. 그렇기 때문에 최종적으로 통합 테스트로 연결된다.
 
-테스트 자동화에 가장 많이 사용되는 라이브러리는 jest와 react-testing-library의 조합이다. jest는 mocha나 jasmine으로 대체할 수 있으며 react-testing-library는 enzyme로 대체할 수 있다.
+테스트 자동화에 가장 많이 사용되는 라이브러리는 jest와 @testing-library/react의 조합이다. jest는 mocha나 jasmine으로 대체할 수 있으며 @testing-library/react는 enzyme로 대체할 수 있다.
 
 <br>
 
 ## React Testing Library
 
-react-testing-library는 모든 테스트를 DOM 위주로 진행한다. 
+testing library는 모든 테스트를 DOM 위주로 진행한다. 또한 enzyme에 비해 필수 기능만 제공하므로 가벼우며 일관성 있고 좋은 관습을 따르는 테스트 코드를 작성할 수 있도록 해준다.
+
+<br>
+
+### Snapshot Testing
+
+스냅샷 테스팅이란 이전에 저장된 렌더링 결과와 테스트 시점에 생성되는 새로운 렌더링 결과가 일치하는지 확인하는 테스트이다.
+
+테스트 대상이 되는 기능의 구현이 변경되어 실제 결과와 이전 스냅샷이 다를 경우 테스트 케이스가 실패하게 되는데, 이 경우 다시 새로운 스냅샷을 만들어 기존의 스냅샷을 교체하는 방식으로 스냅샷도 유지보수를 한다.
+
+스냅샷 테스팅은 함수의 예상 결과를 직접 코디할 필요가 없어 편리하지만 무분별하게 사용할 경우 유지보수가 어렵다는 단점이 있다.
+
+위에서 언급한 jest를 사용하면 스냅샷 테스팅을 보다 쉽게 수행할 수 있다.
+
+<br>
+
+### Methods and Queries
+
+테스팅시 사용되는 메소드는 다음과 같다.
+
+- `render()` : `@testing-library/react` 모듈에 선언되어 있으며 인자로 들어온 컴포너트로 DOM을 생성한다.
+- `expect()` : `jest` 모듈에 선언되어 있으며 테스트 결과와 예상 값이 일치하는지 확인한다.
+- `toMatchSnapshot()` : `jest` 모듈에 선언되어 있으며 파일 스냅샷 테스팅을 지원하기 위한 함수이다. 생성되는 스냅샷을 테스트 파일이 아닌 테스트 파일이 위치하는 경로에  `__snapshots__` 디렉토리가 생성되고 디렉토리 내부에 `snap` 파일이 생성된다.
+
+<br>
+
+렌더링된 DOM 트리에 접근하기 위한 방법은 testing library에서 export된 screen 객체를 이용하는 것이다.
+
+screen 객체는 다양한 쿼리를 제공하며, 쿼리들은 DOM에 접근할 수 있는 함수들이다.
+
+- `getBy*` : 동기적이며, 해당하는 요소가 현재 DOM 안에 존재하는가 확인한다. 그렇지 않을 경우 에러를 발생시킨다.(`getByTestId`, `getByText`, `getByRole`)
+
+- `findBy*` : 비동기적이며, 해당 요소를 찾을 때까지 일정 시간을 기다린다. 일정 시간이 지난후에도 요소를 찾지 못할 경우 에러를 발생시킨다.(`findByText`)
+
+- `queryBy*` : `getBy*`와 마찬가지로 동기적이지만 해당 요소를 찾지 못하더라도 에러가 아닌 null 값을 리턴한다.
+
+- `ByText` : 요소가 가지고 있는 텍스트 값으로 DOM을 선택한다.
+
+- `ByAltText` : `img`와 같이 `alt` 속성을 가지고 있는 요소를 선택한다.
+
+- `ByLableText` : `input` 요소의 `label`의 내용으로 요소를 선택한다.
+
+- `ByDisplayValue` : `input`, `textarea`, `select` 요소의 `value` 프로퍼티로 요소를 선택한다.
+
+- `ByTestId` : 특정 DOM에 직접 테스트할 때 사용할 `id`를 통해 선택한다.
+
+  ```javascript
+  <div data-testid="testId">Example</div>
+  const Example = getByTestId('testId');
+  ```
+
+- `ByRole` : 특정 `role` 값을 포함하고 있는 요소를 선택한다.
+
+[testing library 공식 문서](https://testing-library.com/docs/queries/about/#priority)에서는 다음과 같은 우선순위를 권장한다.
+
+1. 일반적인 쿼리
+   1. `getByRole`
+   2. `getByLabelText`
+   3. `getByPlaceholderText`
+   4. `getByText`
+   5. `getByDisplayValue`
+2. 시맨틱 쿼리
+   1. `getByAltText`
+   2. `getByTitle`
+3. 테스트 id
+   1. `getByTestId`
+
+`screen` 객체와 쿼리를 사용한 예시 테스트 코드는 다음과 같다.
+
+```javascript
+import {render, screen} from '@testing-library/react'
+
+render(
+  <div>
+    <label htmlFor="example">Example</label>
+    <input id="example" />
+    <div>Hello World</div>
+  </div>,
+)
+
+const exampleInput = screen.getByLabelText('Example');
+const textMatch = screen.getByText('Hello World');
+```
+
+<br>
+
+### Event Handling
+
+어플리케이션을 개발할 때 사용자가 발생시키는 이벤트가 예상대로 반응하는지에 대한 테스트도 필요하다.
+
+다음은 어플리케이션과 사용자의 인터랙션을 확인하기 위한 이벤트 테스팅 테스트 코드 작성 방법이다.
+
+`@testing-library/react` 모듈에서 제공하는 `fireEvent` 메소드를 사용하면 쉽게 사용자 이벤트를 발생시킬 수 있다.
+
+```javascript
+fireEvent.[eventName](HTMLElement, eventProperties: Object);
+
+fireEvent.change(email, { target: { value: "user@test.com" } });
+```
+
+`fireEvent`는 실제로 발생해야하는 모든 사용자 이벤트를 발생시키기 어렵다는 단점이 있다. 이 경우 `@testing-library/user-event`에서 제공되는 `userEvent` 메소드를 사용하면 브라우저와 사용자의 인터랙션에 대해 더 복잡한 시뮬레이션이 가능하다.
+
+```javascript
+userEvent.[eventName](HTMLElement, eventProperties)
+
+userEvent.type(email, "user@test.com");
+```
+
+`userEvent`를 사용해 `type`, `click`,  키를 누르는 것을 시물레이션하는 `keyboard`, `upload`, `clear`, `selectOption` 등의 이벤트를 테스트할 수 있다. ([공식 문서 참고](https://testing-library.com/docs/ecosystem-user-event/))
+
+<br>
 
 ###### ...
 
-###### snapshot testing, types of queries, handling event
+###### Todo : form testing, counter example, mocking and test for asynchronous
 
-
+<br>
 
 <br>
 
@@ -66,6 +176,8 @@ react-testing-library는 모든 테스트를 DOM 위주로 진행한다.
 
 **Reference**
 
+- [Testing Library](https://testing-library.com/docs/)
 - [[번역] 초보자를 위한 React 어플리케이션 테스트 심층 가이드](https://blog.rhostem.com/posts/2020-10-14-beginners-guide-to-testing-react-1#overview_of_testing_react_apps)
 - [벨로퍼트와 함께하는 리액트 테스팅](https://velog.io/@velopert/series/react-testing)
-
+- [Jest로 스냅샷(snapshot) 테스트하기](https://www.daleseo.com/jest-snapshot/)
+- [유저 이벤트 테스트 (@testing-library/user-event)](https://www.daleseo.com/testing-library-user-agent/)
