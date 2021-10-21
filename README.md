@@ -50,6 +50,7 @@
 
 - ### **JavaScript**
 
+  - [모던 자바스크립트 Deep Dive](https://github.com/SewookHan/TIL/blob/main/modern-js-deep-dive)
   - [var, let, const](https://github.com/SewookHan/TIL/blob/main/JavaScript/var-let-const.md)
   - [Regular Expression](https://github.com/SewookHan/TIL/blob/main/JavaScript/regular-expression.md)
   - [Destructruing Assignment](https://github.com/SewookHan/TIL/blob/main/JavaScript/destructuring.md)
