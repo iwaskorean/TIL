@@ -50,7 +50,7 @@
 
 - ### **JavaScript**
 
-  - [모던 자바스크립트 Deep Dive](https://github.com/SewookHan/TIL/blob/main/modern-js-deep-dive)
+  - [모던 자바스크립트 Deep Dive](https://github.com/HelloMandu/javascript-deep-dive)
   - [var, let, const](https://github.com/SewookHan/TIL/blob/main/JavaScript/var-let-const.md)
   - [Regular Expression](https://github.com/SewookHan/TIL/blob/main/JavaScript/regular-expression.md)
   - [Destructruing Assignment](https://github.com/SewookHan/TIL/blob/main/JavaScript/destructuring.md)
@@ -106,8 +106,7 @@
 - ### TypeScript
 
   - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
-  - [Literal and Template Literal Type](https://github.com/SewookHan/TIL/blob/main/TypeScript/literal-type-and-template-literal-type.md)
-  - ["?" and "!" in TypeScript](https://github.com/SewookHan/TIL/blob/main/TypeScript/question-mark-and-exclamation-mark.md)
+  - [unknown vs any](https://github.com/SewookHan/TIL/blob/main/TypeScript/https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
 
 
 

@@ -2,16 +2,16 @@
 
 자바스크립트에서 함수는 1급 객체(first class object)이다.
 
-- 1급 객체(first class object) : 객체(obejct)를 1급 시민(first class citizen)으로써 취급
+1급 객체(first class object)란 1급 시민(first class citizen)으로 취급할 수 있는 객체를 말한다.
 
-- 1급 시민(first class citizen)의 조건
-  - 변수(variable)에 담을 수 있다.
-    
-  - 인자(parameter)로 전달할 수 있다.
-    
-  - 반환값(return value)으로 전달할 수 있다.
+1급 시민(first class citizen)의 조건은 다음과 같다.
 
-따라서 함수형 프로그래밍 패턴인 고차 함수(HoF)가 가능하며, 고차 함수는 다른 함수를 인자로 받거나 리턴 할 수 있는 함수를 말한다.
+- 리터럴로 정의되며 런타임에 생성 가능하다.
+- 변수(variable)나 자료구조에 담을 수 있다.
+- 매개변수(parameter)로 전달할 수 있다.
+- 반환 값(return value)으로 전달할 수 있다.
+
+고차 함수란 함수를 인수로 받을 수 있으며 함수를 반환 값으로 사용할 수 있는 함수를 말한다. 자바스크립트에서 함수는 1급 객체이기 때문에 고차 함수(HoF)가 가능하다.
 
 고차 함수를 사용하면 코드를 논리적으로 표현(composability)할 수 있으며 가독성을 높일 수 있다.
 

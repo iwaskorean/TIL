@@ -38,8 +38,6 @@ console.log(x, y, a, b); // -> 10, 'abc', 10, 'abc'
 
 <br>
 
-<br>
-
 ### Objects
 
 원시 타입이 아닌 값이 할당된 변수들은 그 값들을 가르키는 참조(reference)를 갖게 된다. 변수는 실제로 값을 포함하고 있지 않으며, 참조는 메모리상의 객체의 위치를 가르키고 있다.
@@ -59,8 +57,6 @@ arr.push(1);	// #2
 
 <br>
 
-<br>
-
 ### Assigning by Reference
 
 Object와 같은 참조 타입의 값이  `=`를 이용해 다른 변수로 값이 복사 되어질때, 그 값의 주소가 실제로 복사된다.  즉, 값이 아닌 참조로 복사된다.
@@ -73,8 +69,6 @@ var refCopy = reference;
 ![img](https://miro.medium.com/max/1050/1*d2W3ulHbHRGrFQ-c1SG5gA.png)
 
 각각의 변수는 같은 배열을 가르키는 참조를 갖는다.
-
-<br>
 
 <br>
 
@@ -105,7 +99,7 @@ obj = { second: 'ref2' }
 
 위 메모리에서 `{first:'reference'}`가 더 이상 접근 불가능하므로 가비지 컬렉션의 대상이 될 수 있다.
 
-
+<br>
 
 
 ### == and ===
@@ -130,8 +124,6 @@ var arr1str = JSON.stringify(arr1);
 var arr2str = JSON.stringify(arr2);
 console.log(arr1str === arr2str); // true
 ```
-
-<br>
 
 <br>
 

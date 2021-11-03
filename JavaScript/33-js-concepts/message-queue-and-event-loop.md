@@ -31,7 +31,7 @@ WebAPI는 작동이 완료되면 콜백을 콜백 큐에 push한다.
 
 ### Callback queue(message queue, event queue, task queue)
 
-콜백 큐는 스택에서 WebAPI에 의해 보내진 콜백들이 대기하는 큐이다.
+콜백 큐는 스택에서 WebAPI에 의해 보내진 콜백들이 대기하는 큐이다. 콜 스택이 비어있을 경우 콜백 큐에 위치한 콜백이 콜백 큐에서 콜 스택으로 이동한다.
 
 <br>
 
@@ -59,17 +59,16 @@ function main(){
 
 main();
 
-//	Output
-//	A
-//	C
-//  B
+// Output : ? -> ? -> ?
 ```
+
+`main()` 함수 내부에 위치한 순서대로라면 `A` -> `B` -> `C` 가 출력되어야 할 것이다. 그러나 실제로는 `A` -> `C` -> `B` 순서대로 콘솔에 출력된다. 실제 런타임에서 실행되는 과정은 다음과 같다.
 
 ![img](https://miro.medium.com/max/2000/1*64BQlpR00yfDKsXVv9lnIg.png)
 
 1. `main()` 함수가 스택에 push된다. 이후 브라우저는 `main()` 함수의 첫 번째 명령문인 `console.log('A')`를 스택으로 push한 다음 실행해 `A`가 콘솔에 출력되고 `conosle.log('A')`가 스택에서 pop 된다.
-2. 다음 명령문인 `setTimeout()`이 스택에 push되고 실행된다. `setTimeout()` 함수는 브라우저의 WebAPI를 사용해 콜백을 지연시키고 타이머에 대해
-3. `exec()`의 콜백 타이머가 브라우저 API(WebAPI)에서 실행되는 동안 `console.log('C')`가 스택으로 push 된다. 이 예제의 경우 타이머가 0ms 이므로 브라우저가 콜백을 받는 즉시 콜백 큐에 콜백이 추가된다.
+2. 다음 명령문인 `setTimeout()`이 스택에 push되고 실행된다. `setTimeout()` 함수는 브라우저의 WebAPI를 사용해 콜백을 지연시킨다.
+3. `exec()`의 콜백 타이머가 브라우저 API(WebAPI)에서 실행되는 동안 `console.log('C')`가 스택으로 push 된다. 이 예제의 경우 타이머가 0ms 이므로 브라우저가 콜백을 받는 즉시 WebAPI에 의해 `exec()`는 콜백 큐에 추가된다.
 4. `main()` 함수의 마지막 명령문인 `console.log('C')`가 실행되어 콘솔에 `C`가 출력되고 `main()` 함수가 스택에서 pop 된다.
 5. 현재 콜 스택이 비어있는 상태이므로 이벤트 루프에 의해 콜백 큐에 대기하고 있던 콜백 `exec()`가 스택으로 push되고 `console.log('B')` 실행되어 콘솔에 `B`가 출력된다.
 
