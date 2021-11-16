@@ -21,14 +21,7 @@
 
 ## Operating System
 
-- [What is Operating  System?](https://github.com/SewookHan/TIL/blob/main/Operating-System/overview.md)
-- [Semaphore](https://github.com/SewookHan/TIL/blob/main/Operating-System/what-is-semaphore.md)
-- [Components of Operating System](https://github.com/SewookHan/TIL/blob/main/Operating-System/components-of-os.md)
-- [CPU Scheduling Algorithms](https://github.com/SewookHan/TIL/blob/main/Operating-System/cpu-scheduling-algorithms.md)
-- [User Mode vs Kernel Mode](https://github.com/SewookHan/TIL/blob/main/Operating-System/user-mode-and-kernel-mode.md)
-- [Microkernel](https://github.com/SewookHan/TIL/blob/main/Operating-System/microkernel.md)
-- [System Call](https://github.com/SewookHan/TIL/blob/main/Operating-System/system-call.md)
-- [Deadlock](https://github.com/SewookHan/TIL/blob/main/Operating-System/deadlock.md)
+- [Operating System Concepts 10th](https://github.com/SewookHan/TIL/blob/main/Operating-System/operating-system-concepts)
 
 <br>
 
@@ -41,12 +34,10 @@
 ## Front-end
 
 - ### **Tools**
-  
+
   - [Webpack](https://github.com/SewookHan/TIL/blob/main/Tools/webpack.md)
   - [Package Managers](https://github.com/SewookHan/TIL/blob/main/Tools/package-managers.md)
   - [Git Commands](https://github.com/SewookHan/TIL/blob/main/Tools/git-commands.md)
-
-
 
 - ### **JavaScript**
 
@@ -55,40 +46,7 @@
   - [Regular Expression](https://github.com/SewookHan/TIL/blob/main/JavaScript/regular-expression.md)
   - [Destructruing Assignment](https://github.com/SewookHan/TIL/blob/main/JavaScript/destructuring.md)
   - [Bubbling and Capturing](https://github.com/SewookHan/TIL/blob/main/JavaScript/bubbling-and-capturing.md)
-  - [33 JS Concepts](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts) 
-    - [Call Stack](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/call-stack.md)
-    - [Primitive Types](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/primitive-types.md)
-    - [Value Types and Reference Types](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/value-types-and-reference-types.md) 
-    - [Implicit, Explicit, Nominal, Structuring and Duck Typing](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/implicit-explicit-nominal-structuring-and-duck-typing.md)
-    - [== vs === vs typeof](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/==-vs-===-vs-typeof.md)
-    - [Function Scope, Block Scope and Lexical Scope](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/function-block-lexical-scope.md)
-    - [Expression vs Statement](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expression-vs-statement.md)
-    - [IIFE, Modules and Namespaces](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/iife-modules-and-namespaces.md)
-    - [Message Queue and Event Loop](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/message-queue-and-event-loop.md)
-    - [setTimeout, setInterval and requestAnimationFrame](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/settimeout-setinterval-requestanimationframe.md)
-    - [JavaScript Engines](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/javascript-engines.md)
-    - [Bitwise Operator, Type Arrays and Array Buffer](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/bitwise-operator-type-arrays-and-array-buffer.md)
-    - [DOM and Layout Trees](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/dom-and-layout-trees.md)
-    - [Factories and Classes](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/factories-and-classes.md)
-    - [this, call, apply and bind](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/this-call-apply-and-bind.md)
-    - [new, Constructor, instanceof and instances](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/new-constructor-instanceof-and-instance.md)
-    - [Prototype Inheritance and Prototype Chain](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/prototype-inheritance-and-prototype-chain.md)
-    - [Object.create and Object.assign](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/objectcreate-and-objectassign.md)
-    - [map, reducer, filter](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/map-reduce-filter.md)
-    - [Pure Functions, Side Effect and Side Mutation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/pure-functions-side-effects-and-state-mutation.md)
-    - [Closure](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/closure.md)
-    - [High Order Functions](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/high-order-functions.md)
-    - [Recursion](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/recursion.md)
-    - [Collections and Generators](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/collections-and-generators.md)
-    - [Promise](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/promise.md)
-    - [async/await](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/async-and-await.md)
-    - [Expensive Opeartion and Big O Notation](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/expensive-operation-and-big-o-notation.md)
-    - [Inheritance, Polymorphism And Code Reuse](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/inheritance-polymorphism-and-code-reuse.md)
-    - [Design Pattern](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/design-pattern.md)
-    - [Partial Applications, Currying, Compose and Pipe](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/partial-applications-currying-compose-and-pipe.md)
-    - [Clean Code](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts/clean-code.md)
-
-
+  - [33 JS Concepts](https://github.com/SewookHan/TIL/blob/main/JavaScript/33-js-concepts)
 
 - ### React
 
@@ -97,32 +55,24 @@
   - [Portals](https://github.com/SewookHan/TIL/blob/main/React/portals.md)
   - [Redux part 1](https://github.com/SewookHan/TIL/blob/main/React/redux-part1.md)
   - [Redux part 2](https://github.com/SewookHan/TIL/blob/main/React/redux-part2.md)
-  - [Styled  Components](https://github.com/SewookHan/TIL/blob/main/React/styled-components.md)
+  - [Styled Components](https://github.com/SewookHan/TIL/blob/main/React/styled-components.md)
   - [SSR and CSR](https://github.com/SewookHan/TIL/blob/main/React/ssr-and-csr.md)
   - [Redux Toolkit](https://github.com/SewookHan/TIL/blob/main/React/redux-toolkit.md)
-
-
 
 - ### TypeScript
 
   - [Basic](https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
   - [unknown vs any](https://github.com/SewookHan/TIL/blob/main/TypeScript/https://github.com/SewookHan/TIL/blob/main/TypeScript/basic.md)
 
-
-
 - ### Next.js
 
   - [Overview](https://github.com/SewookHan/TIL/blob/main/Nextjs/overview.md)
   - [Data Fetching](https://github.com/SewookHan/TIL/blob/main/Nextjs/data-fetching.md)
 
-
-
 - ### HTML
 
   - [Semantics](https://github.com/SewookHan/TIL/blob/main/HTML/sementics.md)
   - [meta tag](https://github.com/SewookHan/TIL/blob/main/HTML/meta-tag.md)
-
-
 
 - ### CSS
 
