@@ -82,14 +82,105 @@ n개의 프로세스로 구성된 시스템이 있을 때 각 프로세스는 �
 임계 구역은 다음과 같은 요구 사항을 충족해야 한다.
 
 - 상호 배제(mutual exclusion): 한 프로세스가 임계 구역에서 실행 중일 때 다른 프로세스는 함께 실행될 수 없다.
-- 프로그레스(progress): 임계 구역밖에서 실행중인 프로세스들만 임계 구역으로 진입하기 위한 프로세스들을 결정할 수 있다.
+- 진행(progress): 임계 구역밖에서 실행중인 프로세스들만 임계 구역으로 진입하기 위한 프로세스들을 결정할 수 있다.
 - 한정 대기(bounded waiting): 대기의 제한을 두어서 임계 구역 진입에 한정적으로 대기하도록 해야한다.
 
 일반적으로 운영체제는 임계 구역을 다음과 같은 두 가지 방법으로 처리한다.
 
-- 비선점적 커널
+- 비선점형 커널
   - 한 프로세스가 커널 모드를 종료할 때까지 계속해서 선점해서 경쟁 상태를 회피한다.
   - 속도가 느려 잘 사용하지 않는다.
-- 선점적 커널
-  - 다른 프로세스가 언제든지 선점할 수 있다.
+- 선점형 커널
+  - 우선순위가 높은 다른 프로세스가 언제든지 선점할 수 있다.
   - 설계에 어려움이 있지만 더 반응적이다.
+
+<br>
+
+## Petereson's Solution
+
+임계 영역 문제를 해결하기 위한 다양한 솔루션들이 있다.
+
+- 데커 알고리즘
+- 베이커리 알고리즘
+- 엘리슨버그와 맥과이어 알고리즘
+- 피터슨 알고리즘
+
+이 중 피터슨 알고리즘, 피터슨 솔루션에 대해 알아보자.
+
+- 임계 구역과 다른 구역을 번갈아가며 실행되는 두 개의 프로세스로 한정된다.
+- 임계 구역에 진입할 순서를 나타내는 turn 변수와 임계 구역에 진입할 준비를 나타내는 flag 변수를 사용한 알고리즘이다.
+
+```cpp
+int turn;
+boolean flag[2];
+
+while(true){
+	flag[i] = true;
+    turn = j;
+    while(flag[j] && turn == j)
+
+    // critical section
+
+    flag[i] = false;
+
+    //remainder section
+}
+```
+
+피터슨 솔루션은 임계 구역 문제 해결을 위한 개념적 솔루션이다.
+
+- 제대로 동작한다고 보장되지 않는다.(no guarantee)
+- flag와 turn의 값이 변경될 때 컨텍스트 스위치가 발생하면 결과 값이 올바르지 않을 수 있다.
+- 그러나 알고리즘, 개념적으로는 완전히 증명 가능하다.
+- 상호 배제 조건을 충족하며 데드락과 기아 현상이 발생하지 않는다.
+
+<br>
+
+## Hardware Based Solution
+
+임계 구역 문제 해결을 위한 하드웨어 명령어는 다음과 같다.
+
+- 메모리 장벽: 메모리의 변경 사항을 다른 프로세스들에게 전달해 다른 프로세서에서 실행중인 쓰레드에 메모리 변경 사항을 보이게하는 명령어다.
+- 하드웨어 명령어
+
+  - test_and_set()
+
+    ```
+    boolean test_and_set(boolean *target){
+      boolean rv = *target;
+      *target = true;
+      return rv;
+    }
+    do{
+      while(test_and_set(&lock))
+        //do nothing
+
+        //critical section
+
+        lock = false;
+
+        //remainder section
+
+    }while(true);
+    ```
+
+  - compare_and_swap()
+
+    ```
+    while(true){
+      waiting[i] = true;
+      key = 1;
+      while(waiting[i] && key == 1){
+        key = compare_and_swap(&lock, 0, 1);
+      }
+      waiting[i] = false;
+
+      j = (i + 1) % n;
+      while((j != i) && !waiting[j]){
+        j = (j + 1) % n;
+      }
+
+      if(j == i) lock = 0;
+      else waiting[j] = false;
+    }
+    ```
