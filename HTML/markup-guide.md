@@ -16,7 +16,7 @@ title은 문서 내 한번만 사용해야 한다. heading 요소는 한 페이�
 
 ### HEADING
 
-**heading 없이 개요 없다.**
+**heading 없이는 개요도 없다.**
 
 - heading은 문서 개요를 형성하는 필수 요소이다.
 - 웹 브라우저와 화면낭독기에 문서 개요를 드러내는 방법이다.
@@ -126,7 +126,7 @@ a, em/strong, label, q, sub/sup, ins/del, code, dfn, abbr, cite, kbd, ruby, samp
 data, time, mark, output, meter, progress
 ```
 
-**<div>, <span> 요소는 콘텐츠를 의미 단위로 그룹핑하는 요소가 아닌 CSS나 자바스크립트로 DOM을 조작할 필요가 있을 때 편의상 사용하는 요소다.**
+**`<div>`, `<span>` 요소는 콘텐츠를 의미 단위로 그룹핑하는 요소가 아닌 CSS나 자바스크립트로 DOM을 조작할 필요가 있을 때 편의상 사용하는 요소다.**
 
 ### SECTIONING
 
@@ -202,6 +202,135 @@ dialog는 사용자와 상호 작용하는 대화 상자 콘텐츠이다.
 - ins, del: 추가하고 삭제한 내용을 의미한다.
 - progress: 진척도를 나타낸다. 텍스트 노드 작성을 통해 구형 브라우저에서 인식하지 못할 때 대체할 수 있다.
 - b, i, s, u: strong, em, dem ins 요소로 대체할 수 있다.
+
+<br>
+
+## Interactive Content
+
+인터렉티브 콘텐츠는 상호자와 상호 작용할 수 있는 콘텐츠이다. 입력장치로 조작할 수 있다.
+
+```
+a, audio, button, details, embed, iframe, img, input, label,
+select, textarea, video
+
+display: inline | inline-block;
+```
+
+### `<a>` vs `<button>`
+
+같은 외형이라도 a와 button 요소는 용도에 따라 구분해서 사용해야 한다.
+
+- a
+  - 실행 결과를 가리킬 수 URL이 있다.
+  - 링크위에 마우스를 올리면 브라우저 상태 표시줄에 타겟 URL이 표시된다.
+  -
+- button
+  - 참조할 URL이 없을 때 즉, 타겟 URL을 설정할 수 없을 때 사용해야 한다.
+  - URL이 아니라 콘텐츠들이 바뀔 때 사용한다.
+
+CSS 명세의 `cursor: pointer`는 요소가 링크와 연결되어 있을 때 사용하라고 명시되어 있다. 따라서 button 요소에는 손 모양을 사용하지 않는 것이 적절하다.
+
+### `<a target>`
+
+a의 target 속성을 `_blank`로 설정하면 새로운 탭에서 해당 링크 사이트가 열리게 된다. 이것은 자식 창에서 부모 창의 권한을 획득할 수 있는 탭 가로채기 공격에 대상이 될 수 있다.
+
+rel 속성을 통해 이를 방지할 수 있다.
+
+```html
+<a href="https://example.com" target="_blank" rel="noopner noreferrer"></a>
+```
+
+rel 속성에 nooper를 추가하면 window.opener 객체를 제거한다. noreferrer는 이 객체를 제어할 수 없게 만들며 올드 브라우저를 위해 함께 noreferrer를 같이 표기하는 것이 좋다. 최신 브라우저는 nooper 값을 암시적으로 적용한다.
+
+### `<details>`와 `<summary>`
+
+details 요소는 열림 상태일 때 정보를 표시하는 요소이다. open 속성을 통해 컨트롤할 수 있다.
+
+summary 요소는 details 요소의 자식 요소이며 나머지 부분에 대한 요약, 캡션, 범례를 의미한다.
+
+```html
+<details open>
+  <summary>마크업 가이드</summary>
+  <p>의미 적절한 html 요소를 사용하자.</p>
+</details>
+```
+
+### `<input type>`
+
+다양한 쓰임의 type 속성을 알면 적절하게 input을 활용할 수 있다.
+
+다음은 type 속성 값에 대한 input 요소의 설명이다.
+
+- search: 검색창, X 버튼이 함께 표시된다.
+- tel: 모바일 기기에서 전화번호 키패드가 제공된다.
+- url: 키패드에 슬래시와 .com이 함께 제공된다.
+- email: 사용자가 과거에 사용한 이메일 자동완성 기능이 제공된다.
+- date: 날짜나 시간에 대한 포맷이 제공된다.
+- month/week/year: 월/주/년 포맷이 제공된다.
+- color: 컬러 피커가 제공된다.
+
+### `<input attr>`
+
+input 요소의 기타 속성들에 대한 설명이다.
+
+- required: 사용자가 input에 값을 작성하지 않거나 조건에 맞지 않을 때 에러 메시지나 도움말 메시지를 표시한다. 브라우저에 내장되어 있기 때문에 스타일 커스터마이징이 불가하다.
+- placeholder: 데이터 입력을 위한 샘플이나 힌트를 제공한다. label 대신 placeholder를 사용하는 것은 사용자 경험을 떨어트릴 수 있으므로 label을 꼭 같이 써주는것이 좋다.
+
+### <datalist>
+
+datalist는 다른 컨트롤을 위해 미리 정의된 옵션 세트를 의미한다. 보기, 연관 검색어와 같이 미리 정의된 옵션을 생각하면 된다.
+
+```html
+<label for="local">지역번호</label>
+<input type="text" id="local" value="?" list="local-list" />
+
+<datalist id="local-list">
+  <option value="02" label="서울"></option>
+  <option value="051" label="부산"></option>
+</datalist>
+```
+
+<br>
+
+## 이미지 마크업
+
+대용량 이미지는 사용자 경험을 떨어트리는 요소이다. 여러 가지 포맷을 제공한 다음 사용자에게 알맞는 포맷의 이미지를 표시하도록 마크업해야 한다.
+
+- jpg/png: 높은 압축률로 화질이 깨질 수 있다. 올드 브라우저 호환, 폴백 이미지 수단으로만 사용하는 것이 좋다.
+- webp: jpg 대비 30 ~ 70% 수준의 용량이다.
+- avif: 저용량과 고품질 수준의 포맷이다.
+
+### `<picture>`, `<source>`, `<img>`
+
+picture 요소의 type 속성을 통해 사용자에게 맞는 포맷에 대한 조건 분기가 가능하다.
+
+```html
+<picture>
+  <source srcset="ex.avif" type="image/avif" />
+  <source srcset="ex.webp" type="image/webp" />
+  <img src="ex.png" alt />
+</picture>
+```
+
+다음과 같이 마크 업하면 사용자가 avif 포맷을 사용할 수 있는 환경이면 avif를 그렇지 않을 경우 webp 포맷의 이미지를 표시하며 두 포맷 다 지원하지 않을 경우 png 포맷의 이미지를 제공한다.
+
+media 속성과 resolution 속성을 통한 분기도 가능하다.
+
+```html
+<picture>
+  <!-- 해상도 구간, 사용자의 디바이스 width에 맞추어 이미지를 제공한다. -->
+  <source srcset="large.webp" media="(max-width:960px)" />
+  <img src="small.webp" alt />
+</picture>
+
+<picture>
+  <!-- 해상력을 고려해 이미지를 제공한다. img 요소의 srcset에도 적용할 수 있다. -->
+  <source srcset="2ximage.webp 2x, 1ximage.webp" type="image/webp" />
+  <img srcset="2x.jpg" src="1x.jpg" alt />
+</picture>
+```
+
+picture와 source 요소는 화면에 표시되는 요소가 아니라 어떤 img 요소를 화면에 표시할 것인지를 정하는 요소이다.
 
 ---
 
