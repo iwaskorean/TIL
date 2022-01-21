@@ -7,3 +7,4 @@
 - [Chpater 05: CPU Scheduling](./chap05-cpu-scheduling.md)
 - [Chpater 06: Synchronization Tools](./chap06-synchronization-tools.md)
 - [Chpater 07: Synchronization Examples](./chap07-synchronization-examples.md)
+- [Chpater 08: Deadlocks](./chap08-deadlocks.md)
