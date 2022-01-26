@@ -8,3 +8,4 @@
 - [Chpater 06: Synchronization Tools](./chap06-synchronization-tools.md)
 - [Chpater 07: Synchronization Examples](./chap07-synchronization-examples.md)
 - [Chpater 08: Deadlocks](./chap08-deadlocks.md)
+- [Chpater 09: Main Memory](./chap09-main-memory.md)
