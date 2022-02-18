@@ -59,14 +59,13 @@
   - [Virtual DOM](./React/virtual-dom.md)
   - [Hooks](./React/hooks.md)
   - [Portals](./React/portals.md)
-  - [Redux part 1](./React/redux-part1.md)
-  - [Redux part 2](./React/redux-part2.md)
+  - [Redux](./React/redux.md)
   - [Styled Components](./React/styled-components.md)
   - [SSR and CSR](./React/ssr-and-csr.md)
-  - [Redux Toolkit](./React/redux-toolkit.md)
 
 - ### TypeScript
 
+  - [Type Challenges](./TypeScript/type-challenges.md)
   - [Basic](./TypeScript/basic.md)
   - [unknown vs any](./TypeScript/./TypeScript/basic.md)
 
