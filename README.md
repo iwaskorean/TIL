@@ -59,9 +59,8 @@
   - [Virtual DOM](./React/virtual-dom.md)
   - [Hooks](./React/hooks.md)
   - [Portals](./React/portals.md)
-  - [Redux](./React/redux.md)
-  - [Styled Components](./React/styled-components.md)
   - [SSR and CSR](./React/ssr-and-csr.md)
+  - [Redux Overview](./React/redux.md)
 
 - ### TypeScript
 
@@ -73,6 +72,7 @@
 
   - [Overview](./Nextjs/overview.md)
   - [Data Fetching](./Nextjs/data-fetching.md)
+  - [Image Component](./Nextjs/image-component.md)
 
 - ### HTML
 
@@ -85,6 +85,5 @@
 
   - [Pseudo class vs Pseudo element](./CSS/pseudo-classes-vs-pseudo-elements.md)
   - [BEM Methodology](./CSS/bem-methodology.md)
-  - [Normalize.css](./CSS/normalize-css.md)
 
 <br>
